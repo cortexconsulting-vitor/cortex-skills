@@ -1,0 +1,6 @@
+# gerados pelo motor
+**/instagram/
+**/carrossel.html
+node_modules/
+# peças de teste
+skills/*/teste-*/

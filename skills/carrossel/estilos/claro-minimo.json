@@ -1,0 +1,10 @@
+{
+  "nome": "Claro mínimo",
+  "quando": "Design, arquitetura, saúde, bem-estar, moda. Fundo claro, tipografia com ar, acento discreto.",
+  "paleta": {
+    "fundo": "#F4F2EF", "fundo_luz": "#FFFFFF", "fundo_medio": "#DAD5CE", "fundo_claro": "#EAE6E1",
+    "tinta": "#1A1815", "tinta_2": "#4A453E", "tinta_3": "#7A736A", "tinta_4": "#A39C93",
+    "acento": "#2F6B5C", "acento_claro": "#3E8B77", "acento_fundo": "#255449", "apagado": "#9A938A"
+  },
+  "fontes": { "titulo": "Inter Tight", "texto": "Jost", "rotulo": "IBM Plex Mono" }
+}

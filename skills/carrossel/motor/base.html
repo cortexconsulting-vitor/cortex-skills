@@ -1,0 +1,429 @@
+<meta charset="utf-8">
+<title>Córtex — carrossel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+
+<!--
+  ══════════════════════════════════════════════════════════════════════════
+  MOLDE DE CARROSSEL DA CÓRTEX
+  ══════════════════════════════════════════════════════════════════════════
+  Aprovado em 06/08/2026, a partir do carrossel "A Escada de Intervenção".
+
+  COMO USAR
+    1. Copiar esta pasta para marketing/conteudo/<tipo>-<tema>-<AAAA-MM-DD>/
+    2. Editar SOMENTE o bloco <script id="conteudo"> lá embaixo
+    3. NODE_PATH="<...>/marketing/site/node_modules" node render.js
+
+  O QUE NÃO SE MEXE
+    Tudo acima do bloco de conteúdo. Fundo, tipografia, escala, posições,
+    marca e rodapé são o padrão da Córtex — é o que faz o feed ficar coeso.
+    Se uma peça precisa de layout que não existe aqui, o certo é acrescentar
+    um tipo de slide novo ao molde, não improvisar num arquivo solto.
+
+  REGRAS QUE ESTE MOLDE FAZ CUMPRIR SOZINHO
+    · sem traço: nenhuma régua, filete, borda, moldura ou hairline
+    · sem gráfico decorativo: nada de barra, coluna ou escada
+    · fundo único em todos os slides — a mesma parede iluminada
+    · uma ideia por slide, frase curta (a imagem carrega o recado)
+    · peso 500/600, nunca 800/900
+    · cobre só como acento, nunca preenchendo área grande
+  ══════════════════════════════════════════════════════════════════════════
+-->
+
+<style>
+  :root{
+    /* ——— PALETA DO FUNDO ———
+       As paradas da luz em .slide usam estes valores em rgba (o alpha impede
+       referenciar o token direto sem color-mix). Alterar aqui e replicar lá. */
+    --fundo-base:#120D0A;      /* espresso quase preto — background-color   */
+    --fundo-2:#1C1612;         /* secundário — reserva para peça de 2 tons  */
+    --fundo-bronze:#4C3325;    /* madeira escura — parada 46% da luz        */
+    --fundo-cobre:#664734;     /* cobre médio — reserva                     */
+    --fundo-cobre-luz:#8A654F; /* cobre iluminado — parada 24% da luz       */
+    --fundo-luz:#B29C8F;       /* luz quente — parada 0% da luz             */
+    --ink:#F2EDE8; --ink2:#C9BCB0; --ink3:#8F8175; --ink4:#6B5D53;
+    --cobre:#BF9778;        /* marca e rótulos */
+    --cobre-claro:#DDB08C;  /* palavra em destaque, precisa brilhar */
+    --cobre-fundo:#9D785E;
+    --apagado:#8A7460;      /* texto deliberadamente rebaixado */
+    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:22px; --s6:30px; --s7:44px; --s8:72px; --s9:112px;
+  }
+
+  /* SEM TRAÇOS. Nenhuma régua, filete, borda, moldura ou hairline em lugar
+     nenhum. A estrutura vem de escala, peso, cor e espaço — só isso. */
+
+  *{margin:0;padding:0;box-sizing:border-box;border:0}
+  body{background:#000;font-family:'Inter Tight',sans-serif;-webkit-font-smoothing:antialiased}
+
+  .slide{
+    width:1080px;height:1350px;position:relative;overflow:hidden;
+    color:var(--ink);
+    padding:var(--s8);display:flex;flex-direction:column;
+    margin:0 auto 40px;
+
+    /* ——— FUNDO CÓRTEX ———
+       Quatro camadas sobre a base espresso. De cima para baixo:
+         1 vinheta          multiply  — escurece laterais e base
+         2 ruído fino       soft-light— tira a cara de gradiente digital
+         3 veio de madeira  soft-light— esticado na horizontal, esmaece p/ baixo
+                                        (menos textura onde ficam os textos)
+         4 luz do topo      normal    — quente e difusa, sem fonte visível
+       Em soft-light sobre base quase preta a textura quase some no escuro e
+       aparece onde bate a luz: a madeira é revelada pela luz, não domina.
+       Perfil medido em identidade/logo-cortex-mockup.PNG. */
+    background-color:var(--fundo-base);
+    background-image:
+      radial-gradient(138% 108% at 50% 34%,
+        #ffffff 38%, #B4B4B4 72%, #6E6E6E 100%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='1350'%3E%3Cdefs%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0035 0.55' numOctaves='5' seed='23'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3ClinearGradient id='f' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='1'/%3E%3Cstop offset='0.42' stop-color='%23fff' stop-opacity='0.58'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='0.2'/%3E%3C/linearGradient%3E%3Cmask id='m'%3E%3Crect width='1080' height='1350' fill='url(%23f)'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='1080' height='1350' filter='url(%23v)' mask='url(%23m)' opacity='0.5'/%3E%3C/svg%3E"),
+      radial-gradient(126% 86% at 54% -14%,
+        rgba(178,156,143,.31) 0%, rgba(138,101,79,.165) 24%,
+        rgba(76,51,37,.072) 46%, rgba(18,13,10,0) 78%);
+    background-size:cover, 180px 180px, 100% 100%, cover;
+    background-repeat:no-repeat, repeat, no-repeat, no-repeat;
+    background-blend-mode:multiply, soft-light, soft-light, normal;
+  }
+
+  /* ——— cabeçalho ——— */
+  .topo{display:flex;justify-content:space-between;align-items:center;flex:0 0 auto}
+  .marca{display:flex;align-items:center;gap:var(--s3)}
+  .marca .c{width:30px;height:30px;color:var(--cobre);flex:0 0 auto}
+  .wordmark{
+    font-family:'Jost',sans-serif;font-weight:500;font-size:21px;
+    text-transform:uppercase;letter-spacing:.30em;color:var(--ink);
+  }
+  .contador{
+    font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.14em;
+    color:var(--ink4);font-variant-numeric:tabular-nums;
+  }
+
+  /* lockup do slide final — sem filete */
+  .lockup{display:flex;flex-direction:column;align-items:center;gap:var(--s5)}
+  .lockup .c{width:104px;height:104px;color:var(--cobre)}
+  .lockup .wordmark{font-size:40px;letter-spacing:.34em;text-indent:.34em}
+  .assinatura{
+    font-family:'Jost',sans-serif;font-size:13px;text-transform:uppercase;
+    letter-spacing:.24em;text-indent:.24em;color:var(--ink3);
+  }
+
+  /* ——— corpo: sobra dividida em cima e embaixo ——— */
+  .corpo{
+    flex:1 1 auto;min-height:0;display:flex;flex-direction:column;
+    justify-content:center;gap:var(--s7);padding:var(--s6) 0;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:15px;
+    text-transform:uppercase;letter-spacing:.14em;color:var(--cobre);
+  }
+
+  h1{font-weight:600;font-size:112px;line-height:1.02;letter-spacing:-.035em;max-width:13ch}
+  h2{font-weight:600;font-size:92px;line-height:1.06;letter-spacing:-.03em;max-width:14ch}
+
+  .rodape{
+    flex:0 0 auto;display:flex;justify-content:space-between;align-items:baseline;
+    font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink4);
+  }
+
+  /* ——— TRILHA: percurso de etapas ———
+     Sem gráfico, sem barra, sem escada. O avanço aparece pela palavra que
+     acende e cresce; as outras ficam apagadas. De um slide pro outro, a
+     palavra grande desce a lista — é isso que dá a sensação de percurso. */
+  .trilha{display:flex;flex-direction:column;gap:var(--s7)}
+  .trilha span{
+    font-weight:500;font-size:34px;line-height:1;
+    letter-spacing:-.01em;color:var(--ink4);
+  }
+  .trilha span.on{
+    font-weight:600;font-size:100px;line-height:1;
+    letter-spacing:-.04em;color:var(--cobre-claro);
+  }
+
+  .frase{font-weight:500;font-size:48px;line-height:1.22;letter-spacing:-.02em;max-width:17ch}
+
+  /* ——— CONTRASTE: o errado apagado × o certo dominando ——— */
+  .rotulo{
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:15px;
+    text-transform:uppercase;letter-spacing:.14em;color:var(--ink4);
+  }
+  .par.certa .rotulo{color:var(--cobre)}
+  .pergunta{font-weight:500;font-size:54px;line-height:1.1;letter-spacing:-.03em;color:var(--apagado);max-width:16ch}
+  .par.certa .pergunta{color:var(--ink);font-weight:600;font-size:104px;letter-spacing:-.04em;line-height:1.02;max-width:11ch}
+
+  /* ——— COMPARAÇÃO: duas opções, nenhuma vencedora ———
+     A simetria é o argumento. Os dois lados têm o mesmo corpo, o mesmo peso e
+     a mesma cor: se um crescesse ou acendesse, a peça estaria elegendo um
+     vencedor — e comparar não é rankear. O cobre fica só no rótulo da
+     categoria, porque quem manda no slide é a tarefa, não a ferramenta.
+     A microdescrição é rótulo, não frase: caixa-alta, monoespaçada, travada. */
+  .duo{display:flex;flex-direction:column;gap:var(--s9)}
+  .opcao{display:flex;flex-direction:column;gap:var(--s4)}
+  .opcao .nome{font-weight:600;font-size:96px;line-height:1;letter-spacing:-.035em}
+  .opcao .micro{
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:19px;
+    text-transform:uppercase;letter-spacing:.14em;color:var(--ink3);
+  }
+
+  /* ——— MURAL: parede de logos de terceiros na capa ———
+     Só para peça que compara ferramentas. Os logos entram em cor cheia
+     oficial, o que é EXCEÇÃO à paleta — ver identidade/design-guide.md.
+     Espera os arquivos em logos/<nome>.svg ao lado do HTML. */
+  .mural{
+    display:grid;grid-template-columns:repeat(5,1fr);
+    gap:var(--s7) var(--s6);align-items:center;justify-items:center;
+  }
+  .mural{margin-top:var(--s6)}
+  .mural img{width:76px;height:76px;object-fit:contain}
+
+  /* ——— DASHBOARD: uma comparação, uma linha, nada de técnico ———
+     Feito para quem passa o dedo e não conhece a Córtex. Cada slide tem UM
+     eixo, escrito em português comum. Barra VERTICAL: cresce de baixo para
+     cima a partir de uma linha de base comum, que é como o olho lê "mais".
+     O percentual viaja no topo da própria barra, não numa régua fixa — solto
+     lá em cima ele se desgruda do dado que está descrevendo.
+     A barra continua sendo dado: o percentual sai de conta sobre número real
+     sempre que o número existir. Onde não existir, fica registrado no
+     texto.md da peça como leitura da Córtex, nunca como medição. */
+  .tarefa{
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:44px;
+    text-transform:uppercase;letter-spacing:.10em;color:var(--cobre);line-height:1.1;
+  }
+  .colunas{display:flex;gap:var(--s8);align-items:flex-end;justify-content:center}
+  .coluna{
+    flex:1 1 0;min-width:0;max-width:340px;display:flex;flex-direction:column;
+    align-items:center;gap:var(--s5);
+  }
+  /* altura fixa: cabe o maior caso (barra cheia + percentual em cima) sem
+     estourar, e mantém a linha de base comum entre as duas colunas */
+  .coluna .haste{
+    width:100%;max-width:130px;height:540px;
+    display:flex;flex-direction:column;justify-content:flex-end;gap:var(--s4);
+  }
+  .coluna .pct{font-weight:600;font-size:60px;letter-spacing:-.03em;line-height:1;text-align:center}
+  .coluna .preenche{width:100%;border-radius:12px}
+  .coluna img{width:80px;height:80px;object-fit:contain}
+  .coluna .nome{
+    font-weight:600;font-size:46px;letter-spacing:-.03em;
+    line-height:1.05;text-align:center;
+  }
+  .nota{
+    font-weight:500;font-size:28px;line-height:1.3;letter-spacing:-.01em;
+    color:var(--ink3);max-width:40ch;
+  }
+
+  /* ——— CTA ——— */
+  .cta{
+    flex:1 1 auto;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;gap:var(--s7);
+  }
+  .cta h2{max-width:12ch;font-size:78px}
+  .chamada{font-weight:600;font-size:34px;color:var(--cobre);letter-spacing:-.02em}
+  .contato{
+    font-family:'IBM Plex Mono',monospace;font-size:17px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink3);
+  }
+
+  .g4{gap:var(--s4)} .g5{gap:var(--s5)} .g6{gap:var(--s6)} .g7{gap:var(--s7)}
+  .col{display:flex;flex-direction:column}
+</style>
+
+<!-- Símbolo da Córtex — cópia de identidade/logo-cortex-simbolo.svg.
+     Geometria medida do arquivo: externo r42 · interno r28,5 (traço 13,5)
+     · boca 18 no externo e 15 no interno. Editar lá primeiro, copiar aqui. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <path id="marca-c" fill="currentColor"
+        d="M 87.95 32 A 42 42 0 1 0 87.95 68 L 74.23 65 A 28.5 28.5 0 1 1 74.23 35 Z"/>
+</defs></svg>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     ▼▼▼  A PARTIR DAQUI É O ÚNICO LUGAR QUE SE EDITA  ▼▼▼
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<script type="application/json" id="conteudo">
+{
+  "handle": "@cortexconsultoriaempresarial",
+
+  "slides": [
+    {
+      "tipo": "capa",
+      "eyebrow": "Rótulo curto do tema",
+      "titulo": "A frase que para a rolagem. Curta."
+    },
+    {
+      "tipo": "contraste",
+      "errado":  { "rotulo": "O que parece", "texto": "A leitura fácil e errada" },
+      "certo":   { "rotulo": "O que é",      "texto": "A leitura certa" },
+      "chamada": "Fecho de uma linha."
+    },
+    {
+      "tipo": "trilha",
+      "itens": ["Primeira", "Segunda", "Terceira", "Quarta", "Quinta"],
+      "ativo": 0,
+      "frase": "Uma frase. Só uma."
+    },
+    {
+      "tipo": "comparacao",
+      "categoria": "Para a tarefa",
+      "opcoes": [
+        { "nome": "Primeira", "micro": "Até três palavras" },
+        { "nome": "Segunda",  "micro": "Idem" }
+      ]
+    },
+    {
+      "tipo": "declaracao",
+      "eyebrow": "A regra",
+      "titulo": "A conclusão, curta e memorável."
+    },
+    {
+      "tipo": "cta",
+      "titulo":  "A pergunta que devolve pro leitor?",
+      "chamada": "Chama no direct.",
+      "contato": "@cortexconsultoriaempresarial"
+    }
+  ]
+}
+</script>
+
+<!-- ▲▲▲  FIM DA ÁREA EDITÁVEL  ▲▲▲ -->
+
+<script>
+  // Monta os slides a partir do bloco de conteúdo. A estrutura vive aqui,
+  // não no conteúdo — é isso que garante que todo carrossel saia igual.
+  (() => {
+    const dados = JSON.parse(document.getElementById('conteudo').textContent);
+    const total = dados.slides.length;
+    const el = (tag, cls, txt) => {
+      const n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (txt != null) n.textContent = txt;
+      return n;
+    };
+    const marca = () => {
+      const m = el('div', 'marca');
+      m.innerHTML = '<svg class="c" viewBox="0 0 100 100"><use href="#marca-c"/></svg>';
+      m.appendChild(el('div', 'wordmark', 'Córtex'));
+      return m;
+    };
+    const pad = n => String(n).padStart(2, '0');
+
+    const monta = {
+      capa(s, corpo) {
+        const c = el('div', 'col g5');
+        c.append(el('div', 'eyebrow', s.eyebrow), el('h1', null, s.titulo));
+        corpo.append(c);
+      },
+      declaracao(s, corpo) {
+        const c = el('div', 'col g5');
+        c.append(el('div', 'eyebrow', s.eyebrow), el('h2', null, s.titulo));
+        corpo.append(c);
+      },
+      contraste(s, corpo) {
+        for (const [chave, cls] of [['errado', 'par col g4'], ['certo', 'par certa col g4']]) {
+          const p = el('div', cls);
+          p.append(el('div', 'rotulo', s[chave].rotulo), el('div', 'pergunta', s[chave].texto));
+          corpo.append(p);
+        }
+        if (s.chamada) corpo.append(el('div', 'chamada', s.chamada));
+      },
+      mural(s, corpo) {
+        const c = el('div', 'col g7');
+        const t = el('div', 'col g5');
+        t.append(el('div', 'eyebrow', s.eyebrow), el('h1', null, s.titulo));
+        c.append(t);
+        const m = el('div', 'mural');
+        for (const nome of s.logos) {
+          const i = document.createElement('img');
+          i.src = 'logos/' + nome + '.svg';
+          i.alt = nome;
+          m.append(i);
+        }
+        c.append(m);
+        corpo.append(c);
+      },
+      dashboard(s, corpo) {
+        // Altura da barra cheia, em px. O percentual precisa virar px aqui
+        // (e nao height:%) para poder empilhar com o rotulo em cima sem
+        // estourar a haste. Mudar aqui e conferir .haste no CSS.
+        const CHEIA = 440;
+        const c = el('div', 'col g7');
+        c.append(el('div', 'tarefa', s.categoria));
+        const cols = el('div', 'colunas');
+        for (const l of s.lados) {
+          const col = el('div', 'coluna');
+          const haste = el('div', 'haste');
+          haste.append(el('div', 'pct', l.pct + '%'));
+          const p = el('div', 'preenche');
+          p.style.height = (CHEIA * l.pct / 100) + 'px';
+          p.style.background = l.cor;
+          haste.append(p);
+          const i = document.createElement('img');
+          i.src = 'logos/' + l.logo + '.svg';
+          i.alt = l.nome;
+          col.append(haste, i, el('div', 'nome', l.nome));
+          cols.append(col);
+        }
+        c.append(cols, el('div', 'nota', s.nota));
+        corpo.append(c);
+      },
+      comparacao(s, corpo) {
+        const c = el('div', 'col g6');
+        c.append(el('div', 'eyebrow', s.categoria));
+        const duo = el('div', 'duo');
+        for (const o of s.opcoes) {
+          const p = el('div', 'opcao');
+          p.append(el('div', 'nome', o.nome), el('div', 'micro', o.micro));
+          duo.append(p);
+        }
+        c.append(duo);
+        corpo.append(c);
+      },
+      trilha(s, corpo) {
+        const t = el('div', 'trilha');
+        s.itens.forEach((nome, i) => t.append(el('span', i === s.ativo ? 'on' : null, nome)));
+        // Com um degrau aceso, ele é o herói e a lista vem primeiro.
+        // Sem degrau aceso (a lista sendo apresentada inteira), a frase lidera:
+        // senão o leitor encara nomes soltos antes de saber do que se trata.
+        const solta = !(s.ativo >= 0 && s.ativo < s.itens.length);
+        const f = s.frase ? el('div', 'frase', s.frase) : null;
+        if (solta && f) corpo.append(f, t);
+        else { corpo.append(t); if (f) corpo.append(f); }
+      },
+    };
+
+    dados.slides.forEach((s, i) => {
+      const slide = el('div', 'slide');
+      const ultimo = i === total - 1;
+
+      const topo = el('div', 'topo');
+      topo.append(s.tipo === 'cta' ? el('span') : marca(),
+                  el('div', 'contador', `${pad(i + 1)} / ${pad(total)}`));
+      slide.append(topo);
+
+      if (s.tipo === 'cta') {
+        const cta = el('div', 'cta');
+        const lock = el('div', 'lockup');
+        lock.innerHTML = '<svg class="c" viewBox="0 0 100 100"><use href="#marca-c"/></svg>';
+        lock.append(el('div', 'wordmark', 'Córtex'),
+                    el('div', 'assinatura', 'Consultoria em operações inteligentes'));
+        cta.append(lock, el('h2', null, s.titulo),
+                   el('div', 'chamada', s.chamada), el('div', 'contato', s.contato));
+        slide.append(cta);
+      } else {
+        const corpo = el('div', 'corpo');
+        (monta[s.tipo] || (() => { throw new Error('tipo de slide desconhecido: ' + s.tipo); }))(s, corpo);
+        slide.append(corpo);
+      }
+
+      const rodape = el('div', 'rodape');
+      rodape.append(el('span', null, s.tipo === 'cta' ? '' : dados.handle),
+                    el('span', null, i === 0 ? 'Arraste →' : ultimo ? 'Fim' : pad(i + 1)));
+      slide.append(rodape);
+
+      document.body.append(slide);
+    });
+  })();
+</script>

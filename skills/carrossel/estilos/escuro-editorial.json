@@ -1,0 +1,10 @@
+{
+  "nome": "Escuro editorial",
+  "quando": "Autoridade, consultoria, B2B, conteúdo que ensina. Fundo escuro com luz quente lateral.",
+  "paleta": {
+    "fundo": "#120D0A", "fundo_luz": "#B29C8F", "fundo_medio": "#4C3325", "fundo_claro": "#8A654F",
+    "tinta": "#F2EDE8", "tinta_2": "#C9BCB0", "tinta_3": "#8F8175", "tinta_4": "#6B5D53",
+    "acento": "#BF9778", "acento_claro": "#DDB08C", "acento_fundo": "#9D785E", "apagado": "#8A7460"
+  },
+  "fontes": { "titulo": "Inter Tight", "texto": "Jost", "rotulo": "IBM Plex Mono" }
+}

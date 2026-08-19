@@ -1,0 +1,10 @@
+{
+  "nome": "Alto contraste",
+  "quando": "Oferta direta, vendas, fitness, infoproduto. Preto quase puro com acento saturado que grita no feed.",
+  "paleta": {
+    "fundo": "#0A0A0B", "fundo_luz": "#3A3A40", "fundo_medio": "#1C1C20", "fundo_claro": "#2A2A30",
+    "tinta": "#FFFFFF", "tinta_2": "#C8C8CE", "tinta_3": "#8A8A93", "tinta_4": "#5C5C64",
+    "acento": "#E8503A", "acento_claro": "#FF6B52", "acento_fundo": "#B83A28", "apagado": "#6E6E76"
+  },
+  "fontes": { "titulo": "Inter Tight", "texto": "Inter Tight", "rotulo": "IBM Plex Mono" }
+}
