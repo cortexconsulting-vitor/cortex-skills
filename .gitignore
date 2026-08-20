@@ -1,6 +1,7 @@
 # gerados pelo motor
 **/instagram/
 **/carrossel.html
+**/proposta.html
 node_modules/
 # peças de teste — ficam FORA de skills/, para não vazarem na cópia do comprador
 testes/
