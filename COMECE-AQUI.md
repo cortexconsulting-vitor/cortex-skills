@@ -65,6 +65,10 @@ botão. Elas produzem o arquivo e param. Quem decide é você, sempre.
 | Analisar uma planilha ou export | `/analisar-dados` |
 | Montar a pasta de um cliente novo | `/novo-projeto` |
 | Criar uma skill sua, do que você repete | `/mapear-rotinas` |
+| Conferir uma peça antes de publicar | `/revisar-post` |
+| Aparecer no Google e nas IAs | `/seo` |
+| Montar campanha no Google Ads | `/anuncio-google` |
+| Saber como foram os anúncios da semana | `/relatorio-ads` |
 | Descobrir qual skill usar | `/ajuda` |
 
 Esqueceu? `/ajuda` lê o que está instalado e te diz.

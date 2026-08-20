@@ -1,6 +1,6 @@
 # Cortex Skills
 
-**Produto em formação.** Quinze skills prontas, escritas do zero.
+**Dezenove skills, escritas do zero.**
 
 | Skill | Estado | Precisa de |
 |---|---|---|
@@ -19,6 +19,10 @@
 | `.claude/skills/mapear-rotinas` | **Funcionando.** Vira o que você repete em skills suas, com as duas camadas | — |
 | `.claude/skills/novo-projeto` | **Funcionando.** Pasta de cliente com marca isolada, para nenhuma vazar na outra | — |
 | `.claude/skills/ajuda` | **Funcionando.** Lê o que está instalado e diz qual skill resolve o que você quer | — |
+| `.claude/skills/seo` | **Funcionando.** Plano de busca em ordem de execução, com os três primeiros marcados | — |
+| `.claude/skills/relatorio-ads` | **Funcionando.** Lê export de campanha e diz o que mudar na segunda-feira | — |
+| `.claude/skills/anuncio-google` | **Funcionando.** Campanha de busca com grupos por intenção e caracteres contados | — |
+| `.claude/skills/revisar-post` | **Funcionando.** O último olhar antes de publicar. Não publica nada | — |
 
 Duas camadas em toda skill — `SKILL.md` para a máquina, `GUIA.md` para a pessoa.
 A convenção completa está em [`CONVENCAO.md`](CONVENCAO.md).

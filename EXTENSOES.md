@@ -17,7 +17,8 @@ com a sua marca. É outra categoria do que a nossa skill `video` faz — a nossa
 o que já existe**, o Remotion **desenha do zero**.
 
 **Fonte oficial:** [remotion.dev/docs/ai/skills](https://www.remotion.dev/docs/ai/skills)
-· repositório [remotion-dev/skills](https://github.com/remotion-dev/skills)
+· skills em [remotion-dev/skills](https://github.com/remotion-dev/skills)
+· framework em [remotion-dev/remotion](https://github.com/remotion-dev/remotion)
 
 ```bash
 npx remotion skills add
@@ -37,21 +38,41 @@ o caminho curto é a nossa `video`, não esta.
 
 ---
 
-## Analisar vídeo — assistir e resumir
+## claude-video — assistir, transcrever e resumir vídeo
 
-Skill que assiste a um vídeo e devolve resumo, marcações de tempo e trechos que
-valem corte. Combina bem com a nossa `video`: uma acha o trecho, a outra corta.
+Baixa o vídeo (URL ou arquivo local), extrai quadros, pega a legenda ou transcreve o
+áudio, e responde perguntas sobre o conteúdo. Serve para resumir, achar o minuto de
+um trecho, analisar vídeo de concorrente e diagnosticar bug a partir de gravação de
+tela. O comando é `/watch`.
 
-**Ainda não indicamos uma fonte.** Existem várias implementações públicas, com
-qualidades e licenças diferentes, e recomendar uma que a gente não testou seria
-empurrar o problema pro comprador. Quando houver uma testada, ela entra aqui com
-fonte, licença e limite — como o Remotion acima.
+Combina bem com a nossa `video`: **esta acha o minuto, a nossa corta**.
 
-**O que toda opção vai te cobrar:** transcrição. Ou uma API paga por minuto de
-áudio, ou um modelo local pesado na sua máquina. Não existe versão sem esse custo,
-e quem prometer que existe está escondendo a conta.
+**Fonte oficial:** [github.com/bradautomates/claude-video](https://github.com/bradautomates/claude-video)
 
----
+```
+/plugin marketplace add bradautomates/claude-video
+/plugin install watch@claude-video
+```
+
+Fora do Claude Code: `npx skills add bradautomates/claude-video -g`.
+
+**Licença: MIT.** É a mais permissiva das três desta página — permite usar,
+modificar e **redistribuir**, desde que a licença e o crédito ao autor viajem junto.
+Mesmo assim apontamos para a fonte em vez de embalar: o projeto se atualiza, cópia
+embalada envelhece parada, e o comprador precisa configurar chave própria de
+qualquer jeito.
+
+**Exige, e isto é o que custa:**
+
+| Item | O que é |
+|---|---|
+| `ffmpeg` | Livre. Você já instalou se usa a nossa `video` |
+| `yt-dlp` | Livre. `brew install yt-dlp` |
+| Chave de Groq **ou** OpenAI | **Paga.** Só entra quando o vídeo não tem legenda |
+
+Vídeo com legenda disponível sai de graça. Sem legenda, a transcrição é cobrada por
+minuto de áudio. Não existe versão sem essa conta — o que existe é escolher entre
+pagar por API ou rodar um modelo pesado na própria máquina.
 
 ## Como instalar qualquer skill de terceiro
 
