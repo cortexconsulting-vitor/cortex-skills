@@ -13,18 +13,25 @@ Não é um aplicativo. Você conversa, e as coisas saem em arquivo.
 
 ## Os três minutos
 
-**1.** No Claude Code, peça:
-
-> Clona o https://github.com/cortexconsulting-vitor/cortex-skills.git na pasta atual, entra nela e roda o `/instalar`.
-
-Ou pelo terminal:
+**1.** Clone, no terminal ou pedindo ao Claude Code:
 
 ```bash
 git clone https://github.com/cortexconsulting-vitor/cortex-skills.git
-cd cortex-skills
 ```
 
-**2.** Digite:
+**2.** **Abra a pasta `cortex-skills` que apareceu.** No VS Code: `File → Open
+Folder`. No terminal: `cd cortex-skills` e rode o `claude` de dentro dela.
+
+> **É aqui que quase todo mundo trava.** O Claude Code só encontra as skills que
+> estão em `.claude/skills/` **na raiz da pasta que está aberta**. Se você clonar
+> dentro de outro projeto e continuar com aquele projeto aberto, as skills ficam
+> uma pasta abaixo e ele não vê nenhuma. Dar `cd` no terminal integrado **não**
+> resolve — o workspace continua sendo o que você abriu.
+>
+> Se depois de abrir a pasta as skills ainda não aparecerem ao digitar `/`,
+> feche e abra o Claude Code.
+
+**3.** Digite:
 
 ```
 /instalar
@@ -32,7 +39,7 @@ cd cortex-skills
 
 Responda cinco perguntas sobre a sua empresa. Elas ficam gravadas.
 
-**3.** Faça uma coisa de verdade. Não leia a lista — **use uma skill**:
+**4.** Faça uma coisa de verdade. Não leia a lista — **use uma skill**:
 
 ```
 /carrossel
@@ -110,7 +117,7 @@ texto** — não mexa na arte, ou aquela peça sai diferente de todas as outras.
 
 | Sintoma | Quase sempre é |
 |---|---|
-| A skill não aparece quando você digita `/` | Reinicie o Claude Code |
+| A skill não aparece quando você digita `/` | Você não está **dentro** da pasta `cortex-skills`. Abra ela como pasta do projeto, não uma acima. Se já estiver, reinicie o Claude Code |
 | O carrossel não gera PNG | Falta o navegador. Na pasta `motor/`: `npm install` **e** `npx puppeteer browsers install chrome` |
 | O vídeo não aceita legenda desenhada | Seu ffmpeg veio sem libass. Veja o `GUIA.md` da `video` |
 | O texto sai genérico | Falta `marca/negocio.md`. Cinco linhas resolvem |

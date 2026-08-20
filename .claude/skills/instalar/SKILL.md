@@ -14,8 +14,10 @@ Nunca pergunte o que você consegue descobrir sozinho.
 
 1. **Liste a pasta de skills instaladas** — `.claude/skills/` no workspace, ou
    `~/.claude/skills/` se a instalação foi global. É isso que a pessoa tem em mãos.
-   Se não achar nenhuma das duas, ela ainda não copiou as skills: mostre o comando
-   do `README.md` do repositório e pare aqui.
+   Se não achar nenhuma das duas, o motivo quase sempre é um só: **a pessoa clonou
+   o repositório mas está com outra pasta aberta**, e as skills ficaram uma pasta
+   abaixo do workspace. Diga isso — mande abrir a pasta `cortex-skills` como
+   projeto — e pare aqui.
 2. **Procure a marca**, na ordem do contrato: `marca/marca.json` no workspace,
    `marca.json` na pasta, `~/.claude/cortex-.claude/skills/marca.json` no global.
 
