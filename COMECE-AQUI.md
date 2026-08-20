@@ -122,6 +122,7 @@ texto** — não mexa na arte, ou aquela peça sai diferente de todas as outras.
 | O vídeo não aceita legenda desenhada | Seu ffmpeg veio sem libass. Veja o `GUIA.md` da `video` |
 | O texto sai genérico | Falta `marca/negocio.md`. Cinco linhas resolvem |
 | Ela pergunta o que você já respondeu | Defeito. A memória não está sendo encontrada — rode `/ajuda` |
+| Ela fala de um jeito que não bate com a documentação | A cópia em `~/.claude/skills/` está velha. `git pull` e rode o `rsync` de novo |
 
 ## Instalar coisas de fora
 

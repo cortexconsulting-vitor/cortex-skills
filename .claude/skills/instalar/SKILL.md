@@ -21,6 +21,18 @@ Nunca pergunte o que você consegue descobrir sozinho.
 2. **Procure a marca**, na ordem do contrato: `marca/marca.json` no workspace,
    `marca.json` na pasta, `~/.claude/cortex-.claude/skills/marca.json` no global.
 
+**Se existirem as duas cópias** — uma em `~/.claude/skills/` e outra em
+`.claude/skills/` do projeto — **compare-as antes de qualquer outra coisa.** Elas
+divergem em silêncio: a global não se atualiza com `git pull`, e é ela que fala
+quando o clone está numa subpasta. Cópia velha continua funcionando com o
+comportamento antigo, e ninguém percebe.
+
+Se divergirem, diga qual está velha e mostre o comando:
+
+```bash
+rsync -a --exclude node_modules <pasta-do-clone>/.claude/skills/ ~/.claude/skills/
+```
+
 **Se já existir marca em qualquer um dos três, não refaça a entrevista.** Diga
 **de onde** ela veio, mostre o que está gravado e pergunte uma coisa só:
 

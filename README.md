@@ -64,6 +64,10 @@ extensão do VS Code, que leem o mesmo lugar:
 rsync -a --exclude node_modules cortex-skills/.claude/skills/ ~/.claude/skills/
 ```
 
+**O mesmo comando atualiza.** Depois de um `git pull`, rode de novo — a cópia
+global não se atualiza sozinha, e uma cópia velha é pior que nenhuma: ela continua
+funcionando, com o comportamento antigo, e você não tem como perceber.
+
 É `rsync` e não `cp` por um motivo: o motor do carrossel acumula 29 MB de
 `node_modules` compilado para uma máquina só. Ele não pode viajar junto — cada
 instalação roda o seu `npm install`, e a instalação avisa quando falta.
