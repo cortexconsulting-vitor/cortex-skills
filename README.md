@@ -41,6 +41,13 @@ já é instalar**, sem copiar nada:
 git clone https://github.com/cortexconsulting-vitor/cortex-skills.git
 ```
 
+Ou, se você **já está com uma pasta vazia aberta** e quer as skills nela, o ponto
+no fim clona sem criar subpasta:
+
+```bash
+git clone https://github.com/cortexconsulting-vitor/cortex-skills.git .
+```
+
 **Abra a pasta `cortex-skills` como projeto** — `File → Open Folder` no VS Code,
 ou `cd cortex-skills` antes de rodar o `claude`. O Claude Code só lê
 `.claude/skills/` da raiz do workspace aberto; clonada dentro de outro projeto,

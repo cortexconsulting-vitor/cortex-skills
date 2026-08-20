@@ -13,23 +13,31 @@ Não é um aplicativo. Você conversa, e as coisas saem em arquivo.
 
 ## Os três minutos
 
-**1.** Clone, no terminal ou pedindo ao Claude Code:
+**1.** Clone, no terminal:
 
 ```bash
 git clone https://github.com/cortexconsulting-vitor/cortex-skills.git
 ```
 
 **2.** **Abra a pasta `cortex-skills` que apareceu.** No VS Code: `File → Open
-Folder`. No terminal: `cd cortex-skills` e rode o `claude` de dentro dela.
+Folder`.
 
-> **É aqui que quase todo mundo trava.** O Claude Code só encontra as skills que
-> estão em `.claude/skills/` **na raiz da pasta que está aberta**. Se você clonar
-> dentro de outro projeto e continuar com aquele projeto aberto, as skills ficam
-> uma pasta abaixo e ele não vê nenhuma. Dar `cd` no terminal integrado **não**
-> resolve — o workspace continua sendo o que você abriu.
+> **É aqui que quase todo mundo trava.** O Claude Code só encontra skills em
+> `.claude/skills/` **na raiz da pasta aberta**. Uma pasta abaixo, ele não vê — e
+> dar `cd` no terminal integrado não resolve, porque o workspace continua sendo o
+> que você abriu.
 >
-> Se depois de abrir a pasta as skills ainda não aparecerem ao digitar `/`,
-> feche e abra o Claude Code.
+> **Já está com uma pasta vazia aberta e quer clonar ali dentro?** Então o comando
+> leva um **ponto no fim**, que quer dizer "aqui mesmo, sem criar subpasta":
+>
+> ```bash
+> git clone https://github.com/cortexconsulting-vitor/cortex-skills.git .
+> ```
+>
+> Sem o ponto, o `git` **sempre** cria uma subpasta — mesmo você pedindo "clona na
+> pasta atual". A pasta precisa estar vazia para isso funcionar.
+>
+> Se as skills ainda não aparecerem ao digitar `/`, feche e abra o Claude Code.
 
 **3.** Digite:
 
