@@ -13,22 +13,27 @@ Não é um aplicativo. Você conversa, e as coisas saem em arquivo.
 
 ## Os três minutos
 
-**1. Abra o Terminal.** No Mac: `Cmd + Espaço`, digite "Terminal", Enter.
+**1. Abra o VS Code sem nenhuma pasta aberta.** Se ele abrir com um projeto
+antigo, feche a pasta primeiro (`File → Close Folder`) até ver a tela de
+boas-vindas, com o botão **"Clonar Repositório..."**.
 
-Ele já abre na sua pasta pessoal. **Não navegue para lugar nenhum** — é ali mesmo
-que a gente vai instalar.
+**2. Clique em "Clonar Repositório..."** e cole o endereço:
 
-**2. Cole isto e aperte Enter:**
-
-```bash
-git clone https://github.com/cortexconsulting-vitor/cortex-skills.git
+```
+https://github.com/cortexconsulting-vitor/cortex-skills.git
 ```
 
-Isso cria a pasta **`cortex-skills`** dentro da sua pasta pessoal. É o único lugar
-onde ela deve ficar — não mova, não renomeie, não coloque dentro de outro projeto.
+**3. Quando ele perguntar onde salvar, escolha a sua pasta pessoal** — a "Home",
+com o seu nome de usuário. Não escolha uma pasta dentro de outro projeto, nem
+dentro de uma pasta de cliente.
 
-**3. Abra essa pasta no VS Code:** `File → Open Folder`, escolha `cortex-skills`
-na lista que aparece, e confirme.
+**4. Ele termina e pergunta se quer abrir a pasta clonada. Diga que sim.** Isso
+abre `cortex-skills` como o projeto — é o passo que precisa acontecer para as
+skills aparecerem.
+
+*(Prefere terminal a botão? O mesmo resultado sai de
+`git clone https://github.com/cortexconsulting-vitor/cortex-skills.git`, colado no
+Terminal recém-aberto — ele já abre na pasta pessoal, sem precisar navegar.)*
 
 > **Tem que ser essa pasta, não a de cima.** O Claude Code só encontra as skills
 > quando `cortex-skills` é a pasta aberta. Se você abrir a pasta pessoal inteira,
@@ -38,7 +43,7 @@ na lista que aparece, e confirme.
 > `proposta`. Se não aparecerem, feche e abra o Claude Code. Se ainda assim não
 > aparecerem, você abriu a pasta errada.
 
-**4. No Claude Code, digite:**
+**5. No Claude Code, digite:**
 
 ```
 /instalar
@@ -47,7 +52,7 @@ na lista que aparece, e confirme.
 Responda cinco perguntas sobre a sua empresa. Elas ficam gravadas e nenhuma skill
 pergunta de novo.
 
-**5. Faça uma coisa de verdade.** Não leia a lista — **use uma skill**:
+**6. Faça uma coisa de verdade.** Não leia a lista — **use uma skill**:
 
 ```
 /carrossel

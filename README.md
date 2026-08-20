@@ -32,22 +32,26 @@ Skills de outros autores, em [`EXTENSOES.md`](EXTENSOES.md).
 
 ## Como instalar
 
-**No Terminal, sem navegar para lugar nenhum** — ele já abre na sua pasta pessoal,
-que é onde isto deve ficar:
+**No VS Code**, sem pasta nenhuma aberta: botão **"Clonar Repositório..."** na
+tela de boas-vindas, cole o endereço abaixo, e escolha a **pasta pessoal** como
+destino quando ele perguntar.
 
-```bash
-git clone https://github.com/cortexconsulting-vitor/cortex-skills.git
+```
+https://github.com/cortexconsulting-vitor/cortex-skills.git
 ```
 
-Abra a pasta `cortex-skills` no VS Code (`File → Open Folder`) e rode:
+Ele oferece abrir a pasta clonada — aceite. Isso abre `cortex-skills` como o
+projeto, e é preciso ser exatamente essa pasta: uma acima ou dentro de outro
+projeto, o Claude Code não encontra as skills.
+
+*(Via terminal: `git clone https://github.com/cortexconsulting-vitor/cortex-skills.git`,
+colado assim que o Terminal abre — ele já inicia na pasta pessoal.)*
+
+Com a pasta aberta, rode:
 
 ```
 /instalar
 ```
-
-**Tem que ser a pasta `cortex-skills`, não a de cima.** O Claude Code lê
-`.claude/skills/` da raiz do workspace aberto; uma pasta acima, ele não encontra
-nada. É o erro nº 1 de quem instala.
 
 ### Para valer em qualquer pasta
 
