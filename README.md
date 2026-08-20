@@ -1,6 +1,6 @@
 # Cortex Skills
 
-**Produto em formação.** Onze skills prontas, escritas do zero.
+**Produto em formação.** Quinze skills prontas, escritas do zero.
 
 | Skill | Estado | Precisa de |
 |---|---|---|
@@ -15,9 +15,16 @@
 | `.claude/skills/avaliacoes` | **Funcionando.** Réplica pública a review, escrita para quem lê e não para quem avaliou | — |
 | `.claude/skills/escrever-email` | **Funcionando.** Email que você inicia, com assunto que faz abrir e pedido na segunda linha | — |
 | `.claude/skills/video` | **Funcionando.** Corta, vira vertical pro Reels, junta, tira capa e legenda | FFmpeg |
+| `.claude/skills/analisar-dados` | **Funcionando.** Perfila o CSV por medição e lê os números sem inventar nenhum | Node |
+| `.claude/skills/mapear-rotinas` | **Funcionando.** Vira o que você repete em skills suas, com as duas camadas | — |
+| `.claude/skills/novo-projeto` | **Funcionando.** Pasta de cliente com marca isolada, para nenhuma vazar na outra | — |
+| `.claude/skills/ajuda` | **Funcionando.** Lê o que está instalado e diz qual skill resolve o que você quer | — |
 
 Duas camadas em toda skill — `SKILL.md` para a máquina, `GUIA.md` para a pessoa.
 A convenção completa está em [`CONVENCAO.md`](CONVENCAO.md).
+
+**Comprou agora?** Comece por [`COMECE-AQUI.md`](COMECE-AQUI.md) — cinco minutos.
+Skills de outros autores, em [`EXTENSOES.md`](EXTENSOES.md).
 
 ## Como instalar
 

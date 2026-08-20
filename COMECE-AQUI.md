@@ -62,6 +62,9 @@ botão. Elas produzem o arquivo e param. Quem decide é você, sempre.
 | Começar a sessão sabendo onde parou | `/abrir` |
 | Guardar o trabalho no Git | `/salvar` |
 | Corrigir a memória depois que muito mudou | `/atualizar` |
+| Analisar uma planilha ou export | `/analisar-dados` |
+| Montar a pasta de um cliente novo | `/novo-projeto` |
+| Criar uma skill sua, do que você repete | `/mapear-rotinas` |
 | Descobrir qual skill usar | `/ajuda` |
 
 Esqueceu? `/ajuda` lê o que está instalado e te diz.
