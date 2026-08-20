@@ -50,6 +50,35 @@ Verificado no mesmo histórico:
 
 O motor do carrossel deriva de trabalho do próprio autor, não da base importada.
 
+## Revisão de 20/08/2026 — o eco nas descrições
+
+Ao escrever `salvar` e `instalar`, duas `description` saíram com trechos do
+MazyOS: 32 e 33 caracteres literais.
+
+**Não foi cópia deliberada, e é justamente por isso que importa.** As descrições
+das 15 skills do MazyOS ficam carregadas no contexto de quem escreve — elas estão
+instaladas na máquina e aparecem na lista de skills disponíveis. É o lugar mais
+fácil de ecoar sem perceber, e o menos provável de alguém reler com desconfiança.
+
+As duas foram reescritas. A auditoria ganhou uma verificação própria para
+`description`, com limite de 30 caracteres.
+
+### Por que o limite da description não é ainda menor
+
+A primeira tentativa usou 25 caracteres e reprovou três skills por **andaime
+obrigatório**:
+
+- `"use quando o usuário disser"` — convenção do próprio Claude Code
+- `"salvar"`, `"como eu respondo isso"` — gatilhos entre aspas. A skill chamada
+  `salvar` **precisa** reagir à palavra "salvar"
+
+Nada disso é expressão protegível, e nenhum pode ser reescrito sem quebrar a
+skill. O instrumento passou a **remover o andaime antes de medir**: corta tudo a
+partir de "use quando", tira os gatilhos entre aspas e as barras, e mede só o que
+sobra.
+
+Alarme falso é pior que alarme nenhum — ensina a ignorar o alarme.
+
 ## O que isto libera, e o que não
 
 **Libera:** as skills deste repositório podem ser vendidas. São obra original.

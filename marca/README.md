@@ -6,8 +6,14 @@ as skills lerem.
 
 ## O que mora aqui
 
-`marca.json` — nome, handle, descritor, estilo, paleta, fontes, logo, público.
-O esquema canônico está em [`marca.exemplo.json`](marca.exemplo.json).
+| Arquivo | O que é | Obrigatório |
+|---|---|---|
+| `marca.json` | Identidade e voz. Esquema em [`marca.exemplo.json`](marca.exemplo.json) | **Sim** |
+| `negocio.md` | O que a empresa faz e vende. Molde em [`negocio.exemplo.md`](negocio.exemplo.md) | Não |
+| `foco.md` | Prioridades do momento. Molde em [`foco.exemplo.md`](foco.exemplo.md) | Não |
+
+Sem os dois `.md` as skills continuam funcionando — só saem mais genéricas.
+Nenhuma para por falta deles.
 
 **Esta pasta é a marca deste workspace.** Se a marca é sua e vale em qualquer
 pasta que você abrir, o lugar dela é `~/.claude/cortex-skills/marca.json`, e o

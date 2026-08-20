@@ -58,6 +58,22 @@ O passo 4 é o que mantém cada skill vendável sozinha. O passo 3 é o que perm
 instalar as skills uma vez e usá-las em toda pasta. O passo 1 é o que faz um
 estúdio atender dez marcas sem misturar nenhuma.
 
+### O que a memória guarda
+
+| Arquivo | O que é | Quem lê |
+|---|---|---|
+| `marca.json` | Identidade e voz: nome, handle, cor, fonte, logo, tom, o que evitar | Todas |
+| `negocio.md` | O que a empresa faz, vende, para quem, e o que **não** faz | As que escrevem texto |
+| `foco.md` | Prioridades e prazos do momento | As que sugerem o que fazer a seguir |
+
+`marca.json` é obrigatório — sem ele nenhuma skill tem cara. Os dois `.md` são
+opcionais: sem eles as skills funcionam e saem mais genéricas. **Skill nenhuma
+para por falta de `negocio.md`** — ela pergunta o que precisa e segue.
+
+Os três seguem a mesma ordem de resolução, e sempre juntos: memória local
+completa vence memória global completa. Misturar o `marca.json` de um cliente
+com o `negocio.md` de outro é o pior defeito possível deste sistema.
+
 **Skill que pergunta duas vezes a mesma coisa está com defeito.** Se a memória
 existe e a skill entrevistou mesmo assim, é bug — não é zelo.
 

@@ -1,6 +1,6 @@
 ---
 name: instalar
-description: Configura o Cortex Skills no workspace. Faz uma entrevista curta sobre a empresa, grava a identidade em marca/marca.json para todas as skills lerem, e confere o que está instalado e funcionando. Use quando a pessoa acabou de copiar as skills, ou disser "instalar", "configurar", "primeiro uso", "acabei de baixar", "/instalar" — e também quando outra skill não encontrar a marca.
+description: Deixa o Cortex Skills pronto para uso no workspace. Conversa cinco perguntas com a pessoa, grava a identidade dela onde todas as skills leem, confere o que falta na máquina e fecha com uma peça de teste. Use quando a pessoa acabou de copiar as skills, ou disser "instalar", "configurar", "primeiro uso", "acabei de baixar", "/instalar" — e também quando outra skill não encontrar a marca.
 ---
 
 # Instalar
@@ -79,6 +79,31 @@ Grave seguindo o esquema de `marca/marca.exemplo.json`, criando a pasta se preci
 Se a pessoa versiona o workspace, avise que esse arquivo é o contexto de negócio
 dela, não o produto — e que ela provavelmente quer ignorá-lo no Git.
 
+## Passo 2b — o negócio, se ela quiser
+
+A identidade já basta para o carrossel e para a proposta. Para as skills que
+**escrevem texto**, falta saber o que a empresa faz.
+
+Ofereça, uma vez, sem insistir:
+
+> "Já dá pra usar tudo assim. Se você me contar em cinco linhas o que a empresa
+> vende e pra quem, as skills que escrevem texto param de sair genéricas. Quer
+> fazer agora ou depois?"
+
+**Se aceitar**, escute e escreva `negocio.md` você mesmo, no molde de
+`negocio.exemplo.md` — não mande a pessoa preencher formulário. Ela fala, você
+organiza. Duas perguntas bastam:
+
+1. **"O que você vende, e pra quem?"**
+2. **"O que você não faz, que os clientes vivem pedindo?"** — a segunda vale mais
+   que a primeira, porque é o que impede as skills de prometerem o que você não
+   entrega
+
+`foco.md` é para depois, não para a instalação. Prioridade se escreve quando existe.
+
+**Se recusar, siga sem.** Nenhuma skill para por falta desses arquivos, e
+insistir na instalação é o jeito mais rápido de a pessoa abandonar no meio.
+
 ## Passo 3 — conferir as dependências
 
 Não embale ferramenta de terceiro. **Confira e instrua.**
@@ -89,6 +114,8 @@ Hoje:
 | Skill | Precisa | Como conferir |
 |---|---|---|
 | `carrossel` | Node + `puppeteer` | `node --version` e procurar `node_modules/puppeteer` |
+| `proposta` | Node, só isso | `node --version` |
+| as demais | nada | — |
 
 O que faltar, **mostre o comando e deixe a pessoa rodar**. Não instale pacote por
 conta própria: é download grande na máquina dela, e a decisão é dela.

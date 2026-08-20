@@ -21,6 +21,22 @@ Busca binaria em K acha o maior trecho em tempo linear.
 import os, re, glob, sys
 
 LIMITE = 120  # caracteres. Paragrafo copiado passa de 200; abaixo de ~80 e idioma.
+LIMITE_DESC = 30  # frontmatter description, ja sem o andaime.
+                  # As descricoes do MazyOS ficam carregadas no contexto de quem
+                  # escreve, e sao o lugar mais facil de ecoar sem perceber. Mas
+                  # o andaime tem que sair antes de medir: "use quando o usuario
+                  # disser" e convencao do proprio Claude Code, e a lista de
+                  # gatilhos entre aspas e necessidade funcional — a skill
+                  # chamada salvar precisa reagir a palavra "salvar". Nada disso
+                  # e expressao protegivel, e medir com o andaime dentro produz
+                  # alarme falso, que e pior que alarme nenhum: ensina a ignorar.
+
+def so_o_essencial(desc):
+    """Tira o andaime da description e devolve so a parte autoral."""
+    d = re.split(r'\buse (?:quando|para)\b', desc, maxsplit=1)[0]
+    d = re.sub(r'"[^"]*"', ' ', d)      # gatilhos entre aspas
+    d = re.sub(r'/[a-z-]+', ' ', d)     # gatilhos tipo /salvar
+    return re.sub(r'\s+', ' ', d).strip()
 TETO = 600    # maior trecho que vale a pena procurar
 
 FONTES = [
@@ -76,7 +92,8 @@ def main():
 
     reprovados = []
     for n in nossos:
-        meu = norm(open(n, encoding='utf-8').read())
+        bruto = open(n, encoding='utf-8').read()
+        meu = norm(bruto)
         trecho = maior_trecho(meu, cache, blob)
         tam = len(trecho)
         onde = next((f for f, t in textos.items() if trecho and trecho in t), '—')
@@ -84,6 +101,16 @@ def main():
         if not ok:
             reprovados.append((n, onde, tam, trecho))
         print(f'{"  " if ok else "✗ "}{n:46s} {tam:4d} car.  "{trecho[:50]}"')
+
+        # A description do frontmatter passa por um limite mais apertado.
+        m = re.search(r'^description:(.*)$', bruto, re.M)
+        if m:
+            d = so_o_essencial(norm(m.group(1)))
+            td = maior_trecho(d, cache, blob) if d else ''
+            if len(td) >= LIMITE_DESC:
+                onded = next((f for f, t in textos.items() if td in t), '—')
+                reprovados.append((n + ' (description)', onded, len(td), td))
+                print(f'  ✗ ^ description: {len(td)} car. em comum  "{td[:50]}"')
 
     print()
     if reprovados:
