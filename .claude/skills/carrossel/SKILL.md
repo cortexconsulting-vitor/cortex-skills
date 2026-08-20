@@ -83,8 +83,13 @@ Regras que a arte cobra e o texto tem que respeitar:
 Na primeira vez, dentro de `motor/`:
 
 ```bash
-npm install puppeteer
+npm install
+npx puppeteer browsers install chrome
 ```
+
+**São dois comandos, e o segundo não é opcional.** O npm bloqueia scripts de
+pós-instalação por padrão, então o navegador não vem junto — e sem ele o motor
+para na hora de fotografar. Uns 150 MB, uma vez só na máquina.
 
 Depois, para cada peça:
 

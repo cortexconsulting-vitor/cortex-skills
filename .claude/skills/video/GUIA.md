@@ -38,8 +38,9 @@ Em `vertical`, dois modos: **desfoque** (o vídeo inteiro no meio, fundo borrado
 
 Sem licença comercial, sem assinatura, sem conta.
 
-**Para legendar**, além do ffmpeg é preciso rodar `npm install` uma vez dentro da
-pasta da skill. É o Chromium que desenha o texto — o mesmo que gera os carrosséis.
+**Para legendar**, além do ffmpeg é preciso rodar `npm install` **e**
+`npx puppeteer browsers install chrome` uma vez dentro da pasta da skill — o
+segundo comando não é opcional, porque o npm não baixa o navegador sozinho. É o Chromium que desenha o texto — o mesmo que gera os carrosséis.
 
 Foi escolha: o jeito comum de queimar legenda usa uma biblioteca (libass) que muita
 instalação de ffmpeg não traz, e a do Homebrew testada em 20/08/2026 não trazia.

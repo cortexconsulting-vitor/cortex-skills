@@ -22,6 +22,20 @@ const [ent, sai, srt, marcaArq] = process.argv.slice(2);
 if (!srt) morre('uso: node legendar.js <video> <saida> <legenda.srt> [marca.json]');
 for (const f of [ent, srt]) if (!fs.existsSync(f)) morre(`nao achei ${f}`);
 
+const semNavegador = (e) => {
+  const m = String(e && e.message || e);
+  if (!/Could not find Chrome|Browser was not found|ENOENT.*chrome/i.test(m)) return false;
+  console.error('\n✗ O puppeteer esta instalado, mas o navegador dele nao foi baixado.');
+  console.error('');
+  console.error('  Acontece porque o npm bloqueia scripts de pos-instalacao por padrao.');
+  console.error('  Rode isto uma vez, nesta mesma pasta:');
+  console.error('');
+  console.error('    npx puppeteer browsers install chrome');
+  console.error('');
+  console.error('  Sao uns 150 MB, uma vez so na maquina. Depois rode o comando de novo.\n');
+  return true;
+};
+
 let puppeteer;
 try { puppeteer = require('puppeteer'); }
 catch { morre('falta o puppeteer.\n  Rode, dentro da pasta desta skill:  npm install'); }
@@ -67,7 +81,13 @@ const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'legenda-'));
 const largura = Math.round(L * 0.86);
 
 (async () => {
-  const nav = await puppeteer.launch({ headless: 'new' });
+  let nav;
+  try {
+    nav = await puppeteer.launch({ headless: 'new' });
+  } catch (e) {
+    if (semNavegador(e)) process.exit(1);
+    throw e;
+  }
   const pag = await nav.newPage();
   await pag.setViewport({ width: largura, height: 400, deviceScaleFactor: 1 });
 

@@ -113,7 +113,7 @@ Hoje:
 
 | Skill | Precisa | Como conferir |
 |---|---|---|
-| `carrossel` | Node + `puppeteer` | `node --version` e procurar `node_modules/puppeteer` |
+| `carrossel` | Node, `puppeteer` **e o navegador dele** | `node --version`, procurar `node_modules/puppeteer`, e conferir se o navegador existe |
 | `proposta` | Node, só isso | `node --version` |
 | `publicar-tema` | o mesmo do `carrossel` | idem |
 | `video` | FFmpeg (e `npm install` na pasta, só para legendar) | `ffmpeg -version` |
@@ -125,6 +125,23 @@ skill, e só na primeira vez que alguém for legendar.
 
 O que faltar, **mostre o comando e deixe a pessoa rodar**. Não instale pacote por
 conta própria: é download grande na máquina dela, e a decisão é dela.
+
+**A armadilha do puppeteer:** `npm install` sozinho **não** baixa o navegador,
+porque o npm bloqueia scripts de pós-instalação. São sempre dois comandos:
+
+```bash
+npm install
+npx puppeteer browsers install chrome
+```
+
+Confira o navegador de verdade, não só a pasta `node_modules`:
+
+```bash
+node -e "require('puppeteer').launch().then(b=>b.close()).then(()=>console.log('ok'))"
+```
+
+Se isso falhar, o segundo comando não foi rodado. É o motivo número um de a
+primeira peça não sair.
 
 Se algum `GUIA.md` declarar dependência com licença comercial, **diga o limite em
 voz alta** — não deixe a pessoa descobrir isso depois de construir em cima.

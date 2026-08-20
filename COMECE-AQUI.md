@@ -111,7 +111,7 @@ texto** — não mexa na arte, ou aquela peça sai diferente de todas as outras.
 | Sintoma | Quase sempre é |
 |---|---|
 | A skill não aparece quando você digita `/` | Reinicie o Claude Code |
-| O carrossel não gera PNG | Falta `npm install puppeteer` — o `/instalar` avisa |
+| O carrossel não gera PNG | Falta o navegador. Na pasta `motor/`: `npm install` **e** `npx puppeteer browsers install chrome` |
 | O vídeo não aceita legenda desenhada | Seu ffmpeg veio sem libass. Veja o `GUIA.md` da `video` |
 | O texto sai genérico | Falta `marca/negocio.md`. Cinco linhas resolvem |
 | Ela pergunta o que você já respondeu | Defeito. A memória não está sendo encontrada — rode `/ajuda` |

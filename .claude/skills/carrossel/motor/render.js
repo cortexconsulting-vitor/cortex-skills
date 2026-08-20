@@ -11,6 +11,20 @@
 const path = require('path');
 const fs = require('fs');
 
+const semNavegador = (e) => {
+  const m = String(e && e.message || e);
+  if (!/Could not find Chrome|Browser was not found|ENOENT.*chrome/i.test(m)) return false;
+  console.error('\n✗ O puppeteer esta instalado, mas o navegador dele nao foi baixado.');
+  console.error('');
+  console.error('  Acontece porque o npm bloqueia scripts de pos-instalacao por padrao.');
+  console.error('  Rode isto uma vez, nesta mesma pasta:');
+  console.error('');
+  console.error('    npx puppeteer browsers install chrome');
+  console.error('');
+  console.error('  Sao uns 150 MB, uma vez so na maquina. Depois rode o comando de novo.\n');
+  return true;
+};
+
 let puppeteer;
 try {
   puppeteer = require('puppeteer');
@@ -106,7 +120,13 @@ fs.writeFileSync(montado, html);
 
 // ——— render ———
 (async () => {
-  const navegador = await puppeteer.launch();
+  let navegador;
+  try {
+    navegador = await puppeteer.launch();
+  } catch (e) {
+    if (semNavegador(e)) process.exit(1);
+    throw e;
+  }
   const pagina = await navegador.newPage();
   pagina.on('pageerror', e => { console.error('ERRO NA PAGINA:', e.message); process.exitCode = 1; });
   await pagina.setViewport({ width: 1080, height: 1350, deviceScaleFactor: 2 });
