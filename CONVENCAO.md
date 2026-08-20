@@ -59,6 +59,20 @@ cópia do exemplo, e o carrossel carrega — é o que permite copiar a pasta del
 sozinha e funcionar. Ao mudar o esquema, **mudar as duas**. A duplicação é o
 preço da autossuficiência, e é um preço que aceitamos de olhos abertos.
 
+## Como se prova uma mudança no motor
+
+**Não compare PNG por hash.** O render não é determinístico: duas rodadas
+idênticas do mesmo motor, no mesmo Chromium, produzem bytes diferentes nos slides
+`trilha` e `declaracao`. Medido em 20/08/2026, sem nenhuma animação no molde.
+
+Compare o **`carrossel.html` montado**, que o `render.js` grava antes de
+fotografar. Ele é determinístico e é onde a injeção acontece. HTML idêntico
+significa intenção idêntica; o que sobra é ruído do renderizador.
+
+Quando a comparação acusar diferença, **isole a causa antes de aceitar ou negar**:
+renderize com o motor anterior no mesmo Chromium. Foi assim que se descobriu que
+a versão do navegador, sozinha, já muda o PNG.
+
 ## Regras de origem
 
 - **Nada de terceiro entra aqui.** Nenhum arquivo derivado do MazyOS, do Remotion

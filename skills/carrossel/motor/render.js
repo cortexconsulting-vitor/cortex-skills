@@ -32,6 +32,19 @@ const ler = (p, oq) => {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 };
 
+// Troca um ponto de injeção. Se o alvo nao existe, o molde e o motor sairam de
+// sincronia — e seguir em silencio publicaria a peca com a marca de outra
+// empresa. Melhor parar aqui do que descobrir no feed.
+const trocar = (html, alvo, novo, oque) => {
+  if (!html.includes(alvo)) {
+    console.error(`✗ ponto de injecao de ${oque} nao existe no molde`);
+    console.error(`  procurei por: ${alvo}`);
+    console.error('  o molde e o render.js precisam ser da mesma versao.');
+    process.exit(1);
+  }
+  return html.split(alvo).join(novo);
+};
+
 const marca = ler(path.join(PECA, 'marca.json'), 'marca.json');
 const conteudo = ler(path.join(PECA, 'conteudo.json'), 'conteudo.json');
 
@@ -72,12 +85,13 @@ if (marca.logo && marca.logo.d) {
 
 // 4. Wordmark: o molde escreve o nome direto no JS, em dois lugares.
 const nomeSeguro = String(marca.nome).replace(/'/g, "\\'");
-html = html.split("'wordmark', 'Córtex'").join(`'wordmark', '${nomeSeguro}'`);
+html = trocar(html, "el('div', 'wordmark', 'Marca')",
+              `el('div', 'wordmark', '${nomeSeguro}')`, 'wordmark');
 
-// 4b. Descritor: o molde assina com o descritor da Córtex no slide final.
+// 4b. Descritor: o molde assina com o descritor no slide final.
 const descritor = String(marca.descritor || '').replace(/'/g, "\\'");
-html = html.split("'assinatura', 'Consultoria em operações inteligentes'")
-           .join(`'assinatura', '${descritor}'`);
+html = trocar(html, "el('div', 'assinatura', 'Descritor da empresa')",
+              `el('div', 'assinatura', '${descritor}')`, 'descritor');
 
 // 5. Conteúdo: substitui o bloco JSON inteiro, já com o handle da marca.
 const dados = { handle: marca.handle, ...conteudo };

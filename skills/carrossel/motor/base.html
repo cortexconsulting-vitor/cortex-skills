@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Córtex — carrossel</title>
+<title>Carrossel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
@@ -245,7 +245,7 @@
 
 <script type="application/json" id="conteudo">
 {
-  "handle": "@cortexconsultoriaempresarial",
+  "handle": "@suaempresa",
 
   "slides": [
     {
@@ -282,7 +282,7 @@
       "tipo": "cta",
       "titulo":  "A pergunta que devolve pro leitor?",
       "chamada": "Chama no direct.",
-      "contato": "@cortexconsultoriaempresarial"
+      "contato": "@suaempresa"
     }
   ]
 }
@@ -305,7 +305,7 @@
     const marca = () => {
       const m = el('div', 'marca');
       m.innerHTML = '<svg class="c" viewBox="0 0 100 100"><use href="#marca-c"/></svg>';
-      m.appendChild(el('div', 'wordmark', 'Córtex'));
+      m.appendChild(el('div', 'wordmark', 'Marca'));
       return m;
     };
     const pad = n => String(n).padStart(2, '0');
@@ -407,8 +407,8 @@
         const cta = el('div', 'cta');
         const lock = el('div', 'lockup');
         lock.innerHTML = '<svg class="c" viewBox="0 0 100 100"><use href="#marca-c"/></svg>';
-        lock.append(el('div', 'wordmark', 'Córtex'),
-                    el('div', 'assinatura', 'Consultoria em operações inteligentes'));
+        lock.append(el('div', 'wordmark', 'Marca'),
+                    el('div', 'assinatura', 'Descritor da empresa'));
         cta.append(lock, el('h2', null, s.titulo),
                    el('div', 'chamada', s.chamada), el('div', 'contato', s.contato));
         slide.append(cta);
