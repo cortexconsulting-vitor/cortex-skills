@@ -32,58 +32,53 @@ Skills de outros autores, em [`EXTENSOES.md`](EXTENSOES.md).
 
 ## Como instalar
 
-### Clonar e usar — o caminho curto
-
-As skills moram em `.claude/skills/`, que é onde o Claude Code procura. **Clonar
-já é instalar**, sem copiar nada:
+**No Terminal, sem navegar para lugar nenhum** — ele já abre na sua pasta pessoal,
+que é onde isto deve ficar:
 
 ```bash
 git clone https://github.com/cortexconsulting-vitor/cortex-skills.git
 ```
 
-Ou, se você **já está com uma pasta vazia aberta** e quer as skills nela, o ponto
-no fim clona sem criar subpasta:
-
-```bash
-git clone https://github.com/cortexconsulting-vitor/cortex-skills.git .
-```
-
-**Abra a pasta `cortex-skills` como projeto** — `File → Open Folder` no VS Code,
-ou `cd cortex-skills` antes de rodar o `claude`. O Claude Code só lê
-`.claude/skills/` da raiz do workspace aberto; clonada dentro de outro projeto,
-ela fica uma pasta abaixo e nenhuma skill aparece.
-
-Com a pasta aberta, rode:
+Abra a pasta `cortex-skills` no VS Code (`File → Open Folder`) e rode:
 
 ```
 /instalar
 ```
 
-A instalação entrevista, grava a memória, confere o que falta na máquina e fecha
-com uma peça de teste. Feito isso, as skills valem **dentro desta pasta**.
+**Tem que ser a pasta `cortex-skills`, não a de cima.** O Claude Code lê
+`.claude/skills/` da raiz do workspace aberto; uma pasta acima, ele não encontra
+nada. É o erro nº 1 de quem instala.
 
-### Em todas as pastas
-
-Para as skills valerem em qualquer pasta que você abrir — terminal, app ou
-extensão do VS Code, que leem o mesmo lugar:
+### Para valer em qualquer pasta
 
 ```bash
-rsync -a --exclude node_modules cortex-skills/.claude/skills/ ~/.claude/skills/
+rsync -a --exclude node_modules ~/cortex-skills/.claude/skills/ ~/.claude/skills/
 ```
 
 **O mesmo comando atualiza.** Depois de um `git pull`, rode de novo — a cópia
-global não se atualiza sozinha, e uma cópia velha é pior que nenhuma: ela continua
-funcionando, com o comportamento antigo, e você não tem como perceber.
+global não se atualiza sozinha, e cópia velha é pior que nenhuma: continua
+funcionando, com o comportamento antigo, e não há como perceber.
 
-É `rsync` e não `cp` por um motivo: o motor do carrossel acumula 29 MB de
-`node_modules` compilado para uma máquina só. Ele não pode viajar junto — cada
-instalação roda o seu `npm install`, e a instalação avisa quando falta.
+É `rsync` e não `cp` porque o motor do carrossel acumula 29 MB de `node_modules`
+compilado para uma máquina só, e isso não pode viajar.
+
+### O que precisa de instalação extra
+
+Só o carrossel e a legenda do vídeo. Dentro de `~/cortex-skills/.claude/skills/carrossel/motor`:
+
+```bash
+npm install && npx puppeteer browsers install chrome
+```
+
+**São dois comandos.** O npm bloqueia scripts de pós-instalação, então o primeiro
+não baixa o navegador — e sem navegador o motor para na hora de fotografar. As
+outras 16 skills não precisam de nada.
 
 ### Sobre o Codex e outras ferramentas
 
-`.claude/skills/` é o formato do Claude Code. **O Codex não lê essa pasta** e não
-vai encontrar estas skills copiando-as para lá. Fazer o mesmo conjunto valer no
-Codex é uma ponte separada, ainda não construída — e não está prometida aqui.
+`.claude/skills/` é o formato do Claude Code. **O Codex não lê essa pasta.** Fazer
+o mesmo conjunto valer no Codex é uma ponte separada, ainda não construída — e não
+está prometida aqui.
 
 ## Uma marca, ou uma por cliente
 

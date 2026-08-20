@@ -13,41 +13,41 @@ Não é um aplicativo. Você conversa, e as coisas saem em arquivo.
 
 ## Os três minutos
 
-**1.** Clone, no terminal:
+**1. Abra o Terminal.** No Mac: `Cmd + Espaço`, digite "Terminal", Enter.
+
+Ele já abre na sua pasta pessoal. **Não navegue para lugar nenhum** — é ali mesmo
+que a gente vai instalar.
+
+**2. Cole isto e aperte Enter:**
 
 ```bash
 git clone https://github.com/cortexconsulting-vitor/cortex-skills.git
 ```
 
-**2.** **Abra a pasta `cortex-skills` que apareceu.** No VS Code: `File → Open
-Folder`.
+Isso cria a pasta **`cortex-skills`** dentro da sua pasta pessoal. É o único lugar
+onde ela deve ficar — não mova, não renomeie, não coloque dentro de outro projeto.
 
-> **É aqui que quase todo mundo trava.** O Claude Code só encontra skills em
-> `.claude/skills/` **na raiz da pasta aberta**. Uma pasta abaixo, ele não vê — e
-> dar `cd` no terminal integrado não resolve, porque o workspace continua sendo o
-> que você abriu.
->
-> **Já está com uma pasta vazia aberta e quer clonar ali dentro?** Então o comando
-> leva um **ponto no fim**, que quer dizer "aqui mesmo, sem criar subpasta":
->
-> ```bash
-> git clone https://github.com/cortexconsulting-vitor/cortex-skills.git .
-> ```
->
-> Sem o ponto, o `git` **sempre** cria uma subpasta — mesmo você pedindo "clona na
-> pasta atual". A pasta precisa estar vazia para isso funcionar.
->
-> Se as skills ainda não aparecerem ao digitar `/`, feche e abra o Claude Code.
+**3. Abra essa pasta no VS Code:** `File → Open Folder`, escolha `cortex-skills`
+na lista que aparece, e confirme.
 
-**3.** Digite:
+> **Tem que ser essa pasta, não a de cima.** O Claude Code só encontra as skills
+> quando `cortex-skills` é a pasta aberta. Se você abrir a pasta pessoal inteira,
+> ou qualquer outra que contenha a `cortex-skills` dentro, ele não acha nenhuma.
+>
+> Teste em dois segundos: digite `/` e veja se aparecem `abrir`, `carrossel`,
+> `proposta`. Se não aparecerem, feche e abra o Claude Code. Se ainda assim não
+> aparecerem, você abriu a pasta errada.
+
+**4. No Claude Code, digite:**
 
 ```
 /instalar
 ```
 
-Responda cinco perguntas sobre a sua empresa. Elas ficam gravadas.
+Responda cinco perguntas sobre a sua empresa. Elas ficam gravadas e nenhuma skill
+pergunta de novo.
 
-**4.** Faça uma coisa de verdade. Não leia a lista — **use uma skill**:
+**5. Faça uma coisa de verdade.** Não leia a lista — **use uma skill**:
 
 ```
 /carrossel
@@ -57,6 +57,22 @@ Dê um tema que você explica sempre pro cliente. Em poucos minutos você tem os
 slides em PNG com a sua cor.
 
 Pronto. Você já entendeu o sistema. O resto é repetir com outras skills.
+
+---
+
+### Depois: usar em qualquer pasta
+
+O passo acima deixa as skills valendo **dentro da pasta `cortex-skills`**. Quando
+você quiser usá-las em qualquer projeto que abrir, cole isto no Terminal:
+
+```bash
+rsync -a --exclude node_modules ~/cortex-skills/.claude/skills/ ~/.claude/skills/
+```
+
+**Guarde esse comando.** Ele instala e também atualiza: depois de cada `git pull`
+na pasta `cortex-skills`, rode de novo. A cópia não se atualiza sozinha, e uma
+cópia velha continua funcionando com o comportamento antigo — sem erro na tela,
+sem jeito de perceber.
 
 ## O modelo mental, inteiro
 
