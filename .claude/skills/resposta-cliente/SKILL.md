@@ -10,7 +10,7 @@ Escreve a resposta que a pessoa mandaria se tivesse duas horas para pensar nela.
 ## Passo 0 — a voz existe?
 
 Siga o contrato de memória: `marca/marca.json` no workspace, `marca.json` na pasta,
-`~/.claude/cortex-.claude/skills/marca.json` no global. Achou, **use e não pergunte nada**.
+`~/.claude/cortex-skills/marca.json` no global. Achou, **use e não pergunte nada**.
 
 O que importa aqui é o bloco `voz`. **Se a marca existe mas não tem `voz`**, faça
 só estas três perguntas — não repita as de identidade, que já estão respondidas:
@@ -23,7 +23,7 @@ só estas três perguntas — não repita as de identidade, que já estão respo
 Grave `voz` no mesmo arquivo de onde veio a marca e diga onde gravou.
 
 **Sem marca nenhuma?** Faça as três acima e mais uma — *"Como você assina?"* — e
-ofereça gravar em `~/.claude/cortex-.claude/skills/marca.json`.
+ofereça gravar em `~/.claude/cortex-skills/marca.json`.
 
 ## Passo 1 — dizer o que a mensagem realmente é
 

@@ -18,16 +18,18 @@ pedaço idêntico.
 Limite: **120 caracteres**. Parágrafo copiado passa de 200; abaixo de ~80 é
 vocabulário do idioma e do domínio.
 
-## Resultado — aprovado
+## Resultado atual — 21/08/2026
 
-14 arquivos do produto, 30 fontes. **Maior trecho literal em todo o produto: 36
-caracteres.**
+53 arquivos do produto, 30 fontes. **Maior trecho literal em todo o produto: 36
+caracteres**, o mesmo de sempre — investigado abaixo, é texto do próprio autor.
 
-| Arquivo | Maior trecho |
-|---|---|
-| `carrossel/motor/base.html` | 36 car. |
-| `carrossel/SKILL.md`, `instalar/SKILL.md` | 33 car. (frontmatter `--- name: ... description:`) |
-| todos os demais | 27 car. ou menos |
+Este número substitui o registro anterior de 14 arquivos, que era de quando só
+`carrossel` e `instalar` existiam. **Isto não é auditoria jurídica nem parecer
+de licença.** É uma trava técnica que compara texto contra as fontes conhecidas
+e para a publicação se achar cópia acima do limite — nada além disso, e nada
+menos.
+
+Detalhe completo de arquivo por arquivo, na saída de `python3 auditoria/auditar.py`.
 
 ## O trecho de 36 caracteres, investigado
 
@@ -79,6 +81,30 @@ sobra.
 
 Alarme falso é pior que alarme nenhum — ensina a ignorar o alarme.
 
+## Revisão de 21/08/2026 — descoberta deixa de ser por profundidade fixa
+
+O auditor usava `glob.glob('.claude/skills/*/*.md')` e variações — um padrão
+para cada combinação de extensão e profundidade de pasta. Cinco arquivos ficaram
+fora do alcance sem nenhum aviso: os três `carrossel/estilos/*.json` (paleta de
+cor, conteúdo autoral de verdade) e os dois `package-lock.json` (que também
+saíram, mas de propósito — lockfile de terceiro não é texto autoral).
+
+**A causa era estrutural, não um esquecimento pontual.** Toda vez que uma skill
+ganhasse uma subpasta nova, o padrão fixo deixaria de enxergar o que estivesse
+nela — e nada no resultado avisaria que a cobertura tinha caído. `descobrir()`
+agora varre `.claude/skills/` recursivamente com `os.walk`, filtrando por
+extensão e ignorando `node_modules`, `__pycache__` e lockfile de terceiro por
+nome. 53 arquivos encontrados contra 50 antes.
+
+O script também ganhou `--source <pasta>`, repetível, para comparar contra
+qualquer conjunto de fontes — não só as duas do autor. Sem `--source` e sem as
+pastas padrão na máquina, ele recusa aprovar: mostra os caminhos que procurou e
+sai com código 1. **Isto é intencional.** Quem compra o produto não tem essas
+pastas na máquina e não precisa rodar esta auditoria — ela é ferramenta de quem
+publica, não de quem instala. Um clone público sem fonte configurada tem que
+falhar ruidosamente, nunca aprovar em silêncio por não ter achado nada para
+comparar.
+
 ## O que isto libera, e o que não
 
 **Libera:** as skills deste repositório podem ser vendidas. São obra original.
@@ -96,6 +122,7 @@ Alarme falso é pior que alarme nenhum — ensina a ignorar o alarme.
 
 ```bash
 python3 auditoria/auditar.py
+python3 auditoria/auditar.py --source ~/outra/pasta/.claude/skills   # fonte extra
 ```
 
 Roda em segundos e sai com código 1 se reprovar. **Rode antes de publicar

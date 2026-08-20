@@ -14,7 +14,7 @@ Siga o contrato de memória, **nesta ordem**:
 1. **`marca/marca.json` na raiz do workspace.** Achou? Use e **pule a entrevista
    inteira** — a pessoa já respondeu isso. Perguntar de novo é defeito.
 2. **`marca.json` na pasta em que você está.** Achou? Use.
-3. **`~/.claude/cortex-.claude/skills/marca.json`** — a marca pessoal, que vale em qualquer
+3. **`~/.claude/cortex-skills/marca.json`** — a marca pessoal, que vale em qualquer
    pasta. Achou? Use.
 4. **Nenhum dos três?** Aí sim, faça a entrevista abaixo, antes de qualquer outra
    coisa. Uma pergunta por vez, esperando a resposta.
@@ -53,7 +53,7 @@ Grave seguindo `marca.exemplo.json` e mostre o que gravou.
 ofereça a alternativa que resolve de vez:
 
 > "Essa marca é só deste projeto, ou é a tua marca em geral? Se for a tua, eu
-> guardo em `~/.claude/cortex-.claude/skills/marca.json` e ela vale em qualquer pasta que
+> guardo em `~/.claude/cortex-skills/marca.json` e ela vale em qualquer pasta que
 > você abrir."
 
 Diga onde gravou, sempre.

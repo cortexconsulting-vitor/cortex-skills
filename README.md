@@ -88,7 +88,7 @@ está prometida aqui.
 
 A memória segue quem você é:
 
-- **Marca sua**, em qualquer pasta → `~/.claude/cortex-.claude/skills/marca.json`
+- **Marca sua**, em qualquer pasta → `~/.claude/cortex-skills/marca.json`
 - **Marca de um cliente**, só naquela pasta → `marca/marca.json`
 
 O local vence o global. Quem atende dez clientes faz dez pastas, e nenhuma marca
@@ -104,17 +104,16 @@ Por isso cada skill funciona copiada sozinha, o conjunto se comporta como sistem
 e você responde a entrevista **uma vez na vida** em vez de uma vez por pasta. A
 ordem completa está em [`CONVENCAO.md`](CONVENCAO.md).
 
-## Fontes autorais candidatas
+## Fontes autorais
 
-Duas linhas de trabalho divergentes estão preservadas, separadas e intactas:
+**Este repositório é a linha canônica.** As 19 skills foram reescritas do zero,
+sem copiar arquivo de nenhuma origem — nunca é mesclado nada dentro dele. Duas
+linhas de rascunho anteriores existiram só como inventário de ideias, em pastas
+privadas fora deste repositório; elas não são fonte de arquivo, e um comprador
+não precisa delas nem tem acesso a elas.
 
-- `../../operacao/.claude/skills` — 15 skills, 13 modificadas em relação ao original
-- `../../laboratorio/legado-cortex-os/.claude/skills` — 15 skills, 14 modificadas, divergentes das anteriores
-
-**Nenhuma linha canônica foi escolhida.** As duas não devem ser mescladas antes dessa decisão.
-
-Elas servem como **inventário de ideias**, não como fonte de arquivo. Toda skill
-daqui é reescrita do zero — é o que mantém o produto distribuível.
+A prova de que nada foi copiado está em [`auditoria/AUDITORIA.md`](auditoria/AUDITORIA.md) —
+método, resultado e como reproduzir.
 
 ## Licença
 
@@ -127,10 +126,11 @@ fez aqui. Ideia não pertence a ninguém; o texto destes arquivos pertence.
 
 ## Origem — auditado
 
-As quatro skills deste repositório foram escritas do zero e **passaram na
-auditoria de origem em 20/08/2026**: maior trecho literal em comum com as 30
-skills derivadas do MazyOS é de **36 caracteres**, e esse trecho foi rastreado no
-Git como texto do próprio autor. Registro completo e método em
+As 19 skills deste repositório foram escritas do zero e **passaram na auditoria
+de origem em 21/08/2026**: maior trecho literal em comum com as fontes comparadas
+é de **36 caracteres**, e esse trecho foi rastreado no Git como texto do próprio
+autor. **Isto não é auditoria jurídica** — é uma trava técnica contra cópia
+textual acidental. Registro completo e método em
 [`auditoria/AUDITORIA.md`](auditoria/AUDITORIA.md).
 
 ```bash

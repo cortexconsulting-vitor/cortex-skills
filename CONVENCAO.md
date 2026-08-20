@@ -46,7 +46,7 @@ handle, público, tom — segue **esta ordem, sem exceção**:
    daquele cliente. Achou? Usa e **não pergunta nada.**
 2. **`marca.json` na pasta em que está trabalhando.** Peça solta, sem workspace
    montado. Achou? Usa.
-3. **`~/.claude/cortex-.claude/skills/marca.json`** — a marca da própria pessoa, que vale
+3. **`~/.claude/cortex-skills/marca.json`** — a marca da própria pessoa, que vale
    em qualquer pasta da máquina. Achou? Usa.
 4. **Nada disso? Faz a própria entrevista curta** — e no fim oferece gravar.
 
