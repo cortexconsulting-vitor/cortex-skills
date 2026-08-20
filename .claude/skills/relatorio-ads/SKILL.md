@@ -61,13 +61,29 @@ configurar antes de continuar investindo.
 
 Antes de recomendar qualquer coisa:
 
-- **Menos de 50 cliques ou 5 conversões não conclui nada.** Diga "ainda sem dado",
-  não "está performando mal"
+**Duas coisas diferentes precisam de volumes diferentes.** Confundir as duas trava
+recomendação boa e libera recomendação ruim:
+
+| Sobre | Precisa de | Exemplo |
+|---|---|---|
+| **Conversão** — está valendo a pena? | 50 cliques **e** 5 conversões | "o custo por lead subiu" |
+| **Entrega** — a máquina está funcionando? | bem menos | frequência, CTR, custo por clique |
+
+**Frequência acima de 3 é conclusiva com duas conversões**, porque mede saturação de
+público, não resultado. O mesmo vale para CTR muito baixo e custo por clique
+disparando. Diga essas coisas mesmo sem volume de conversão — e diga **por que** você
+pode dizer.
+
+Sem o volume da primeira coluna, sobre conversão diga **"ainda sem dado"**, não "está
+performando mal".
+
 - **Variação de até 20% semana a semana é normal.** Não é tendência
 - **Compare com o mesmo dia da semana.** Segunda com sábado não se compara
 
-**Recomendar corte com base em três cliques é o erro mais caro desta skill.** Mata
-campanha que ia funcionar e a pessoa nunca fica sabendo.
+**Recomendar corte por resultado ruim com base em três cliques é o erro mais caro
+desta skill** — mata campanha que ia funcionar e ninguém fica sabendo. Mas recusar
+apontar um público saturado porque "faltam conversões" é o erro oposto, e queima
+verba enquanto você espera dado que não vai melhorar.
 
 ## Passo 4 — o relatório
 

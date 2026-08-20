@@ -40,7 +40,10 @@ O que toda resposta boa tem:
   feedback!" mostram no perfil que ninguém está lendo nada
 - **Uma frase concreta sobre o que vocês fazem** — é ela que fala com quem está
   lendo de fora
-- **Uma saída**, quando houver problema: o canal direto, com o nome de quem atende
+- **Uma saída**, quando houver problema: o canal direto, com o nome de quem atende.
+  **Se o contato não estiver no `negocio.md`, pergunte** — "qual telefone ou @ eu
+  ponho, e quem atende?". Não invente número nem nome: resposta pública com
+  telefone errado é pior que resposta sem telefone
 
 O que nenhuma tem:
 

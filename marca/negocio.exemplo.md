@@ -28,3 +28,9 @@ O limite. Serve para as skills não prometerem o que você não entrega.
 
 Quantas pessoas, quem faz o quê. Se é você sozinho, escreva isso — vale mais
 que inventar plural.
+
+## Como falam com você
+
+Telefone, WhatsApp, @ e email — e **quem atende cada um**. As skills que escrevem
+resposta pública precisam disso para não inventar; sem estas linhas elas vão
+perguntar toda vez, ou pior, chutar.

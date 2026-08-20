@@ -21,12 +21,22 @@ Pergunte também: já existe site? Qual endereço? Tem perfil no Google?
 
 ## Passo 1 — o que as pessoas realmente procuram
 
-Sem ferramenta paga. As fontes que funcionam:
+Sem ferramenta paga. **Quem pesquisa é você, não o usuário** — se tiver acesso à
+web, busque; a pessoa não abriu esta skill para receber lição de casa.
 
-- **O autocompletar do Google** — digite o serviço e veja o que ele completa
-- **"As pessoas também perguntam"** e as buscas relacionadas no rodapé
-- **O que os clientes escrevem** no WhatsApp e no email. É a fonte mais
-  subaproveitada e a mais fiel — ninguém pesquisa como escreve no site
+Você busca:
+
+- **O autocompletar e as buscas relacionadas** do serviço + a cidade
+- **"As pessoas também perguntam"** dos mesmos termos
+- **Quem já ocupa** as primeiras posições (é o Passo 2, e sai da mesma busca)
+
+Você pede — porque só a pessoa tem:
+
+- **O que os clientes escrevem** no WhatsApp e no email. É a fonte mais fiel que
+  existe e ninguém pesquisa como escreve no site. Peça cinco mensagens reais
+
+**Sem acesso à web, diga isso em voz alta** e trabalhe com o que a pessoa trouxer,
+marcando os termos como hipótese a confirmar. Não apresente palpite como pesquisa.
 
 Separe em três grupos, porque pedem páginas diferentes:
 
@@ -42,7 +52,8 @@ cliente. Volume não paga conta.
 
 ## Passo 2 — o que os concorrentes já ocupam
 
-Busque de cinco a dez termos do Passo 1 e anote quem aparece nos três primeiros. Para
+Você mesmo busca de cinco a dez termos do Passo 1 e anota quem aparece nos três
+primeiros. Para
 cada concorrente recorrente:
 
 - O que a página dele tem que a sua não tem
