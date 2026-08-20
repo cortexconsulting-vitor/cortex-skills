@@ -70,21 +70,30 @@ Ordem que funciona: `cortar` → `vertical` → `legenda` → `capa`.
 
 Nunca faça `vertical` num vídeo de 40 minutos para depois cortar 30 segundos dele.
 
-## Passo 4 — legenda, e o limite honesto
+## Passo 4 — legenda
 
-**Legenda queimada exige um ffmpeg compilado com libass.** Nem toda instalação tem
-— a do Homebrew em 20/08/2026 não tinha. O script **detecta e para**, com o
-comando da build correta.
+```bash
+node video.js legenda <entrada> <saida> <legenda.srt> [marca.json]
+```
 
-`legenda-embutida` funciona em qualquer build, mas grava a legenda como **faixa do
-arquivo**, não desenhada na imagem. **Instagram, TikTok e Reels não mostram
-legenda assim.** Serve para YouTube, player de site e arquivo de entrega.
+**A legenda é desenhada pelo navegador, não pelo ffmpeg.** O filtro `subtitles` do
+ffmpeg exige a biblioteca libass compilada dentro da build, e muita instalação não
+tem — a do Homebrew testada em 20/08/2026 não tinha. Aqui o Chromium desenha o
+texto, do mesmo jeito que o carrossel desenha os slides, e o ffmpeg só sobrepõe
+imagem. Funciona em qualquer build.
 
-Se a pessoa quer Reels legendado e a build não queima, **diga isso** em vez de
-entregar o embutido como se resolvesse.
+**Passe o `marca.json`** e a legenda sai com a fonte e a cor da empresa. Sem ele,
+branco com contorno preto, que é legível sobre qualquer fundo.
+
+Exige `npm install` uma vez dentro da pasta da skill — é o Chromium que desenha.
+Acima de 200 falas o script para: a cadeia de filtros fica lenta demais.
+
+**`legenda-embutida` é outra coisa** e quase nunca é o que se quer: grava como
+faixa do arquivo, e **Instagram, TikTok e Reels não mostram**. Serve para YouTube,
+player de site e arquivo de entrega.
 
 Este script **não transcreve áudio**. Ele aplica um `.srt` que já existe. Se não
-houver, peça — ou a pessoa gera em outro lugar e volta.
+houver, peça — ou veja a `claude-video` no `EXTENSOES.md`, que transcreve.
 
 ## Nunca
 

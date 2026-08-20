@@ -101,7 +101,16 @@ Duas linhas de trabalho divergentes estão preservadas, separadas e intactas:
 Elas servem como **inventário de ideias**, não como fonte de arquivo. Toda skill
 daqui é reescrita do zero — é o que mantém o produto distribuível.
 
-## Licença e origem — auditado
+## Licença
+
+**Use à vontade, no seu negócio e nos dos seus clientes. Troque o nome se quiser.
+Só não redistribua os arquivos nem venda acesso a eles.** Termos completos em
+[`LICENSE`](LICENSE).
+
+Quer vender um produto parecido? Pode — escrevendo do zero, que foi o que a gente
+fez aqui. Ideia não pertence a ninguém; o texto destes arquivos pertence.
+
+## Origem — auditado
 
 As quatro skills deste repositório foram escritas do zero e **passaram na
 auditoria de origem em 20/08/2026**: maior trecho literal em comum com as 30

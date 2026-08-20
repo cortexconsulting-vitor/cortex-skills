@@ -11,7 +11,7 @@
 //   node video.js cortar    <entrada> <saida> <inicio> <fim>
 //   node video.js vertical  <entrada> <saida> [desfoque|corte]
 //   node video.js juntar    <saida> <clipe1> <clipe2> ...
-//   node video.js legenda   <entrada> <saida> <arquivo.srt>   (desenhada na imagem)
+//   node video.js legenda   <entrada> <saida> <arquivo.srt> [marca.json]  (na imagem)
 //   node video.js legenda-embutida <entrada> <saida> <arquivo.srt>  (faixa do arquivo)
 //   node video.js capa      <entrada> <saida.jpg> [segundo]
 
@@ -140,40 +140,15 @@ if (cmd === 'info') {
   console.log(`pronto: ${sai}  (${clipes.length} clipes)`);
 
 } else if (cmd === 'legenda') {
-  const [ent, sai, srt] = arg;
-  if (!srt) morre('uso: legenda <entrada> <saida> <arquivo.srt>');
-  if (!fs.existsSync(srt)) morre(`nao achei o arquivo de legenda ${srt}`);
-  const i = sonda(ent);
-
-  // Queimar legenda exige o filtro `subtitles`, que so existe em build de
-  // ffmpeg compilada com libass. Nem toda instalacao tem — a do Homebrew em
-  // 20/08/2026 nao tinha. Sem o filtro, o caminho honesto e parar: cair
-  // calado para legenda embutida entregaria um arquivo que parece certo e
-  // nao mostra legenda nenhuma no Instagram.
-  if (!temFiltro('subtitles')) {
-    console.error('✗ este ffmpeg nao queima legenda: falta o filtro `subtitles` (libass).');
-    console.error('');
-    console.error('  Duas saidas:');
-    console.error('  1. Instalar um ffmpeg com libass:');
-    console.error('       brew tap homebrew-ffmpeg/ffmpeg');
-    console.error('       brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-libass');
-    console.error('  2. Usar `legenda-embutida`, que funciona em qualquer build —');
-    console.error('     mas a legenda fica como faixa do arquivo, nao desenhada na');
-    console.error('     imagem. Instagram, TikTok e Reels NAO mostram legenda assim.');
-    process.exit(1);
-  }
-
-  // As virgulas de force_style precisam de barra: dentro do filtro elas
-  // separariam um filtro do proximo.
-  const estilo = ['FontName=Helvetica', 'FontSize=16', 'PrimaryColour=&H00FFFFFF',
-    'OutlineColour=&H00000000', 'BorderStyle=1', 'Outline=2', 'Shadow=0',
-    'Alignment=2', 'MarginV=90'].join('\\,');
-  const caminho = srt.replace(/\\/g, '/').replace(/:/g, '\\:').replace(/'/g, "\\'");
-  rodar(['-i', ent, '-vf', `subtitles=filename='${caminho}':force_style='${estilo}'`,
-         '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
-         ...(i.temAudio ? ['-c:a', 'copy'] : ['-an']),
-         '-movflags', '+faststart', sai], 'legenda');
-  console.log(`pronto: ${sai}  (legenda desenhada na imagem)`);
+  const [ent, sai, srt, marca] = arg;
+  if (!srt) morre('uso: legenda <entrada> <saida> <arquivo.srt> [marca.json]');
+  // Desenhar texto e trabalho do navegador, nao do ffmpeg: o filtro `subtitles`
+  // exige libass, que muita build nao tem. legendar.js usa o Chromium, funciona
+  // em qualquer instalacao e sai com a fonte e a cor da marca.
+  const r = spawnSync('node', [path.join(__dirname, 'legendar.js'),
+                               ent, sai, srt, ...(marca ? [marca] : [])],
+                      { stdio: 'inherit' });
+  process.exit(r.status === null ? 1 : r.status);
 
 } else if (cmd === 'legenda-embutida') {
   const [ent, sai, srt] = arg;

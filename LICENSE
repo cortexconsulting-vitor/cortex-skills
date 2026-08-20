@@ -1,0 +1,64 @@
+# Licença do Cortex Skills
+
+Copyright (c) 2026 Vitor Meirinho — Córtex Consultoria Tecnológica
+
+Esta licença vale para todo o conteúdo deste repositório: as skills, os motores,
+os modelos, os guias e a documentação.
+
+## Você pode
+
+- **Usar em qualquer lugar**, para sempre, inclusive comercialmente: no seu
+  negócio, nos trabalhos dos seus clientes, na sua agência
+- **Modificar como quiser** — mudar textos, regras, cores, o que for
+- **Trocar o nome.** Pode chamar de "OS da sua empresa", pôr a sua marca e usar
+  assim internamente e com os seus clientes
+- **Entregar o resultado** que sair daqui — carrossel, proposta, relatório,
+  vídeo — sem nos mencionar. O que você produz é seu
+- **Instalar em quantas máquinas você quiser**, dentro do seu negócio
+
+## Você não pode
+
+- **Redistribuir estes arquivos**, de graça ou pago, inteiros ou em parte —
+  incluindo versão renomeada ou levemente modificada. Vale para repositório
+  público, pasta privada, curso, comunidade paga, marketplace, zip ou qualquer
+  outra forma de entrega
+- **Vender acesso** a este material, ou a um derivado dele, a quem não licenciou
+  direto da Córtex. **Cobrar pelo acesso é distribuir**, mesmo que a cobrança
+  seja pelo "curso", pela "comunidade" ou pela "consultoria" que dá acesso
+- **Sublicenciar** ou repassar os seus direitos a terceiros
+
+## Quer vender um produto parecido?
+
+**Pode.** Ideia, funcionalidade e lista de recursos não pertencem a ninguém — o
+que esta licença protege é **o texto destes arquivos**, não o conceito.
+
+O caminho é o mesmo que percorremos aqui: escreva do zero. Estude o que existe,
+entenda o que funciona e produza os seus próprios arquivos. É trabalho de verdade,
+e é justamente por isso que o resultado é seu.
+
+O que não vale é copiar, trocar o nome e vender.
+
+## Sem garantia
+
+Este material é fornecido **como está**, sem garantia de espécie alguma. Você é
+responsável pelo que publica, envia, propõe e cobra usando estas ferramentas.
+
+Nenhuma skill deste pacote publica, envia, compra ou contrata em seu nome — a
+decisão final é sempre de quem opera. **Confira antes de publicar.**
+
+## Coisas de terceiros
+
+Ferramentas externas que este material recomenda — FFmpeg, Node, Puppeteer,
+Remotion, claude-video e outras — têm licença própria, não são nossas e não são
+cobertas por esta. Ver [`EXTENSOES.md`](EXTENSOES.md). A relação com o autor de
+cada uma é sua, direta, e não passa por nós.
+
+## Dúvida sobre um uso específico
+
+Pergunte antes: **contato@cortexconsultoria.com.br**. É mais barato para os dois
+lados que descobrir depois.
+
+---
+
+*Este texto foi escrito para ser entendido, não para ser à prova de tribunal. Se
+o seu caso envolve valor relevante, mostre para um advogado.*

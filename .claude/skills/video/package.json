@@ -1,0 +1,6 @@
+{
+  "name": "cortex-skill-video",
+  "private": true,
+  "description": "Dependencia da skill de video: o Chromium que desenha a legenda.",
+  "dependencies": { "puppeteer": "^25.0.0" }
+}

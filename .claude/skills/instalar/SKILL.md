@@ -116,13 +116,12 @@ Hoje:
 | `carrossel` | Node + `puppeteer` | `node --version` e procurar `node_modules/puppeteer` |
 | `proposta` | Node, só isso | `node --version` |
 | `publicar-tema` | o mesmo do `carrossel` | idem |
-| `video` | FFmpeg | `ffmpeg -version` |
+| `video` | FFmpeg (e `npm install` na pasta, só para legendar) | `ffmpeg -version` |
 | as demais | nada | — |
 
-**No `video`, confira também se a build queima legenda:**
-`ffmpeg -filters | grep " subtitles "`. Se não aparecer, a instalação veio sem
-libass e a legenda desenhada na imagem não vai funcionar — diga isso agora, não
-depois que a pessoa gravar o vídeo.
+**A legenda do `video` não depende da build do ffmpeg** — quem desenha o texto é o
+Chromium, não o ffmpeg. O que ela precisa é do `npm install` dentro da pasta da
+skill, e só na primeira vez que alguém for legendar.
 
 O que faltar, **mostre o comando e deixe a pessoa rodar**. Não instale pacote por
 conta própria: é download grande na máquina dela, e a decisão é dela.

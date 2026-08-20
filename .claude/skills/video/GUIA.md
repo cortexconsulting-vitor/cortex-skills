@@ -15,7 +15,7 @@ horizontal em vertical, tirar três cortes de uma live, juntar takes, gerar a ca
 - **Edição criativa.** Transição, trilha, correção de cor, motion graphics. Isso é
   editor de vídeo, e um editor de verdade faz melhor
 - **Transcrever áudio.** Ela aplica um `.srt` que já existe; não gera legenda a
-  partir da fala
+  partir da fala. Para isso existe a `claude-video`, no `EXTENSOES.md`
 - **Escolher o trecho.** Ela não assistiu ao vídeo. Você diz o minuto
 - **Arquivo enorme sem cortar antes.** Vertical num vídeo de 40 minutos leva o
   tempo de 40 minutos de vídeo
@@ -38,9 +38,13 @@ Em `vertical`, dois modos: **desfoque** (o vídeo inteiro no meio, fundo borrado
 
 Sem licença comercial, sem assinatura, sem conta.
 
-**Atenção à legenda queimada:** ela exige um ffmpeg compilado com **libass**, e
-nem toda instalação vem com isso — a do Homebrew testada em 20/08/2026 não vinha.
-O script detecta e te dá o comando da build certa em vez de entregar outra coisa.
+**Para legendar**, além do ffmpeg é preciso rodar `npm install` uma vez dentro da
+pasta da skill. É o Chromium que desenha o texto — o mesmo que gera os carrosséis.
+
+Foi escolha: o jeito comum de queimar legenda usa uma biblioteca (libass) que muita
+instalação de ffmpeg não traz, e a do Homebrew testada em 20/08/2026 não trazia.
+Desenhando pelo navegador funciona em qualquer máquina, e a legenda ainda sai com a
+**tua fonte e a tua cor** em vez de um branco genérico.
 
 ## O erro comum
 
