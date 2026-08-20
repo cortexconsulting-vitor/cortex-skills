@@ -12,10 +12,14 @@ Gera carrossel 1080x1350 em PNG, pronto pra postar, com a marca **do usuário**.
 Siga o contrato de memória, **nesta ordem**:
 
 1. **`marca/marca.json` na raiz do workspace.** Achou? Use e **pule a entrevista
-   inteira** — a pessoa já respondeu isso na instalação. Perguntar de novo é defeito.
+   inteira** — a pessoa já respondeu isso. Perguntar de novo é defeito.
 2. **`marca.json` na pasta em que você está.** Achou? Use.
-3. **Nenhum dos dois?** Aí sim, faça a entrevista abaixo, antes de qualquer outra
+3. **`~/.claude/cortex-skills/marca.json`** — a marca pessoal, que vale em qualquer
+   pasta. Achou? Use.
+4. **Nenhum dos três?** Aí sim, faça a entrevista abaixo, antes de qualquer outra
    coisa. Uma pergunta por vez, esperando a resposta.
+
+O local vence o global: se a pasta tem marca própria, é a dela que manda.
 
 ### As cinco perguntas
 
@@ -45,10 +49,14 @@ deu cores próprias, use as dele e mantenha o resto da predefinição.
 Grave seguindo `marca.exemplo.json` e mostre o que gravou.
 
 **Onde gravar:** se existir uma pasta `marca/` na raiz do workspace, grave em
-`marca/marca.json` e diga que gravou lá — assim nenhuma outra skill vai perguntar
-isso de novo. Se não existir, grave `marca.json` na pasta de trabalho e ofereça:
-*"Quer que eu guarde isso em `marca/marca.json`? Aí as outras skills já saem com
-a tua marca sem perguntar nada."*
+`marca/marca.json`. Se não existir, grave `marca.json` na pasta de trabalho e
+ofereça a alternativa que resolve de vez:
+
+> "Essa marca é só deste projeto, ou é a tua marca em geral? Se for a tua, eu
+> guardo em `~/.claude/cortex-skills/marca.json` e ela vale em qualquer pasta que
+> você abrir."
+
+Diga onde gravou, sempre.
 
 ## Passo 2 — escrever o conteúdo
 

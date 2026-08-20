@@ -9,6 +9,11 @@ as skills lerem.
 `marca.json` — nome, handle, descritor, estilo, paleta, fontes, logo, público.
 O esquema canônico está em [`marca.exemplo.json`](marca.exemplo.json).
 
+**Esta pasta é a marca deste workspace.** Se a marca é sua e vale em qualquer
+pasta que você abrir, o lugar dela é `~/.claude/cortex-skills/marca.json`, e o
+esquema é o mesmo. O local vence o global: uma pasta com `marca/marca.json`
+própria ignora a global — é assim que se atende vários clientes sem misturar.
+
 **Este arquivo não vem preenchido.** Ele nasce de uma de duas formas:
 
 1. Você roda a skill de instalação, responde a entrevista e ela grava aqui
@@ -22,7 +27,7 @@ nova que você instalar já sai com a sua cara.
 
 ## Se você só quer uma skill
 
-Não precisa desta pasta. Toda skill do repositório funciona copiada sozinha:
+Não precisa desta pasta nem da global. Toda skill do repositório funciona copiada sozinha:
 quando não encontra `marca/marca.json`, ela faz a própria entrevista curta. A
 memória compartilhada melhora o pacote, não é pré-requisito dele.
 

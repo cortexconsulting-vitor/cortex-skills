@@ -16,10 +16,11 @@ Nunca pergunte o que você consegue descobrir sozinho.
    `~/.claude/skills/` se a instalação foi global. É isso que a pessoa tem em mãos.
    Se não achar nenhuma das duas, ela ainda não copiou as skills: mostre o comando
    do `README.md` do repositório e pare aqui.
-2. **Procure `marca/marca.json`.**
+2. **Procure a marca**, na ordem do contrato: `marca/marca.json` no workspace,
+   `marca.json` na pasta, `~/.claude/cortex-skills/marca.json` no global.
 
-**Se `marca/marca.json` já existir, não refaça a entrevista.** Mostre o que está
-gravado e pergunte uma coisa só:
+**Se já existir marca em qualquer um dos três, não refaça a entrevista.** Diga
+**de onde** ela veio, mostre o que está gravado e pergunte uma coisa só:
 
 > "Já tem marca configurada aqui: **\<nome\>**, \<handle\>, estilo \<estilo\>.
 > Quer manter, ajustar algum campo, ou refazer do zero?"
@@ -61,11 +62,19 @@ soltas quebra o contraste que o molde depende.
 
 ## Passo 2 — gravar e mostrar
 
-Grave `marca/marca.json` seguindo o esquema de `marca/marca.exemplo.json`.
+Antes de gravar, **pergunte onde** — é a decisão que define o resto do uso:
 
-**Mostre o que gravou**, campo a campo, e diga a frase que importa:
+> "Essa marca é tua, ou é de um cliente que você atende?
+>
+> Se for tua, eu guardo em `~/.claude/cortex-skills/marca.json` e ela vale em
+> **qualquer pasta** que você abrir. Se for de cliente, guardo em `marca/marca.json`
+> aqui nesta pasta — e cada cliente fica na pasta dele, sem misturar."
 
-> "Gravei em `marca/marca.json`. Nenhuma outra skill vai te perguntar isso de novo."
+Grave seguindo o esquema de `marca/marca.exemplo.json`, criando a pasta se preciso.
+
+**Mostre o que gravou**, campo a campo, e diga onde ficou:
+
+> "Gravei em `<caminho>`. Nenhuma outra skill vai te perguntar isso de novo."
 
 Se a pessoa versiona o workspace, avise que esse arquivo é o contexto de negócio
 dela, não o produto — e que ela provavelmente quer ignorá-lo no Git.

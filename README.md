@@ -12,34 +12,65 @@ A convenção completa está em [`CONVENCAO.md`](CONVENCAO.md).
 
 ## Como instalar
 
-Na pasta onde você vai trabalhar:
+### Em todas as pastas (recomendado)
+
+As skills ficam disponíveis em **qualquer pasta** que você abrir no Claude Code —
+terminal, app ou extensão do VS Code, que leem o mesmo lugar:
 
 ```bash
-mkdir -p .claude/skills marca
-cp -R /caminho/para/cortex-skills/skills/* .claude/skills/
-cp /caminho/para/cortex-skills/marca/marca.exemplo.json marca/
+mkdir -p ~/.claude/skills
+rsync -a --exclude node_modules /caminho/para/cortex-skills/skills/ ~/.claude/skills/
 ```
 
-Depois, no Claude Code, rode:
+### Só num projeto
+
+Quando as skills têm que valer só ali — um cliente, um repositório específico:
+
+```bash
+mkdir -p .claude/skills
+rsync -a --exclude node_modules /caminho/para/cortex-skills/skills/ .claude/skills/
+```
+
+### Depois, em qualquer um dos dois
+
+No Claude Code, rode:
 
 ```
 /instalar
 ```
 
 A cópia é um comando porque tem que ser: a skill de instalação não consegue se
-instalar sozinha. Feita a cópia, ela cuida do resto.
+instalar sozinha. Feita a cópia, ela cuida do resto — entrevista, memória e teste.
 
-**Uma pasta por marca.** A memória é lida do workspace em que você está. Quem
-atende vários clientes faz uma pasta por cliente — nenhuma marca vaza pra outra.
+É `rsync` e não `cp` por um motivo: o motor do carrossel acumula 29 MB de
+`node_modules` compilado pra uma máquina só. Ele não pode viajar junto — cada
+instalação roda o seu `npm install`, e a skill de instalação avisa quando falta.
+
+### Sobre o Codex e outras ferramentas
+
+`.claude/skills/` é o formato do Claude Code. **O Codex não lê essa pasta** e não
+vai encontrar estas skills copiando-as para lá. Fazer o mesmo conjunto valer no
+Codex é uma ponte separada, ainda não construída — e não está prometida aqui.
+
+## Uma marca, ou uma por cliente
+
+A memória segue quem você é:
+
+- **Marca sua**, em qualquer pasta → `~/.claude/cortex-skills/marca.json`
+- **Marca de um cliente**, só naquela pasta → `marca/marca.json`
+
+O local vence o global. Quem atende dez clientes faz dez pastas, e nenhuma marca
+vaza pra outra.
 
 ## O contrato de memória
 
-O que separa isto de um `git clone` qualquer: toda skill procura
-`marca/marca.json` antes de abrir a boca. Achou, usa e não pergunta nada. Não
-achou, entrevista e oferece gravar.
+O que separa isto de um `git clone` qualquer: **toda skill procura a marca antes
+de abrir a boca** — na pasta, depois no global. Achou, usa e não pergunta nada.
+Não achou, entrevista e oferece gravar.
 
-Por isso cada skill funciona copiada sozinha, **e** o conjunto se comporta como
-sistema. A regra completa está em [`CONVENCAO.md`](CONVENCAO.md).
+Por isso cada skill funciona copiada sozinha, o conjunto se comporta como sistema,
+e você responde a entrevista **uma vez na vida** em vez de uma vez por pasta. A
+ordem completa está em [`CONVENCAO.md`](CONVENCAO.md).
 
 ## Fontes autorais candidatas
 

@@ -11,6 +11,11 @@ skills/<nome-da-skill>/
 └── (arquivos de apoio: templates, scripts, exemplos)
 ```
 
+**Nada que seja da sua máquina viaja dentro de `skills/`.** Já escaparam por ali
+peças de teste com PNG na cor da Córtex e 29 MB de `node_modules` compilado. O
+`.gitignore` não protege: quem instala copia a pasta, não clona o repositório.
+Instalação se testa instalando numa pasta vazia e listando o que chegou.
+
 **Peça de teste não mora dentro de `skills/`.** Vai para `testes/<skill>/`, na
 raiz. A instalação do comprador é uma cópia de `skills/*` — tudo que estiver ali
 dentro chega na máquina dele, inclusive PNG renderizado com a marca da Córtex.
@@ -37,17 +42,21 @@ Cinco seções, sempre nesta ordem:
 Toda skill que precisa saber algo sobre o negócio do comprador — nome, cor,
 handle, público, tom — segue **esta ordem, sem exceção**:
 
-1. **Procura `marca/marca.json`** na raiz do workspace. Achou? Usa e **não
-   pergunta nada.**
-2. **Não achou? Procura `marca.json` na pasta em que está trabalhando.** Achou?
-   Usa.
-3. **Não achou nenhum dos dois? Faz a própria entrevista curta** — e no fim
-   oferece gravar em `marca/marca.json`, para que a próxima skill não pergunte
-   de novo.
+1. **`marca/marca.json` na raiz do workspace.** É a marca daquele projeto ou
+   daquele cliente. Achou? Usa e **não pergunta nada.**
+2. **`marca.json` na pasta em que está trabalhando.** Peça solta, sem workspace
+   montado. Achou? Usa.
+3. **`~/.claude/cortex-skills/marca.json`** — a marca da própria pessoa, que vale
+   em qualquer pasta da máquina. Achou? Usa.
+4. **Nada disso? Faz a própria entrevista curta** — e no fim oferece gravar.
 
-O passo 3 é o que mantém cada skill vendável sozinha. O passo 1 é o que faz o
-conjunto virar sistema. Uma skill que só implementa o passo 3 é um catálogo;
-uma que só implementa o passo 1 fica inerte na mão de quem não instalou.
+**O local sempre vence o global.** Quem atende clientes abre a pasta do cliente e
+trabalha com a marca dele; quem publica em nome próprio abre qualquer pasta e a
+marca dele já está lá. Inverter essa ordem é como se posta na cor errada.
+
+O passo 4 é o que mantém cada skill vendável sozinha. O passo 3 é o que permite
+instalar as skills uma vez e usá-las em toda pasta. O passo 1 é o que faz um
+estúdio atender dez marcas sem misturar nenhuma.
 
 **Skill que pergunta duas vezes a mesma coisa está com defeito.** Se a memória
 existe e a skill entrevistou mesmo assim, é bug — não é zelo.
