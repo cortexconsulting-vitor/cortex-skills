@@ -86,15 +86,30 @@ Duas linhas de trabalho divergentes estão preservadas, separadas e intactas:
 Elas servem como **inventário de ideias**, não como fonte de arquivo. Toda skill
 daqui é reescrita do zero — é o que mantém o produto distribuível.
 
-## Redistribuição bloqueada
+## Licença e origem — auditado
 
-Ambas as linhas derivam do MazyOS (`github.com/mazzeoia/MazyOS`), que não publica arquivo de
-licença. Sem licença explícita vale copyright padrão: não há concessão de uso, modificação ou
-redistribuição a terceiros. **Nada daqui pode ser vendido ou redistribuído antes da auditoria de
-licença.** O registro de origem está em `../../laboratorio/legado-cortex-os/ATRIBUICAO.md`.
+As quatro skills deste repositório foram escritas do zero e **passaram na
+auditoria de origem em 20/08/2026**: maior trecho literal em comum com as 30
+skills derivadas do MazyOS é de **36 caracteres**, e esse trecho foi rastreado no
+Git como texto do próprio autor. Registro completo e método em
+[`auditoria/AUDITORIA.md`](auditoria/AUDITORIA.md).
 
-As skills deste repositório foram escritas do zero e não derivam de lá — mas isso
-precisa ser **auditado arquivo a arquivo antes da primeira venda**, não presumido.
+```bash
+python3 auditoria/auditar.py
+```
+
+**Rode antes de publicar qualquer versão nova.** Auditoria antiga não cobre skill
+nova.
+
+### O que continua proibido
+
+Embalar arquivo de terceiro — Remotion, skills da remotion-dev, MazyOS, qualquer
+coisa sem licença de redistribuição. **Vender acesso a uma pasta é distribuir o
+que está dentro dela**, e repositório privado não ameniza: o pagamento fica
+documentado.
+
+Skill que depende de ferramenta externa **manda instalar** e declara o limite de
+licença no `GUIA.md`. O produto é conhecimento organizado, não acervo de arquivos.
 
 ## Skills globais não são produto
 

@@ -91,6 +91,26 @@ a versão do navegador, sozinha, já muda o PNG.
   (ex.: Remotion é livre até 3 funcionários; acima disso o comprador precisa de
   licença própria)
 
+### Cobrar pelo acesso é distribuir
+
+**"Eu não vendo as skills de terceiro, vendo o acesso à pasta" não separa nada.**
+O direito autoral olha a cópia e a distribuição, não o rótulo da transação. Se o
+arquivo de outro autor está dentro da pasta que o comprador acessa mediante
+pagamento, houve redistribuição comercial da obra dele. Repositório privado não
+ameniza: o pagamento fica documentado.
+
+O que separa de verdade é **onde o arquivo mora**:
+
+| Isto pode ser vendido | Isto não pode |
+|---|---|
+| Skill nossa que **manda instalar** o Remotion e ensina a usá-lo | O Remotion, ou as skills da remotion-dev, dentro da pasta |
+| Skill nossa que resolve o mesmo problema que uma do MazyOS | Qualquer arquivo derivado do MazyOS |
+| Documento nosso listando o que instalar e onde conseguir | O instalador ou o pacote de terceiro embalado junto |
+
+**O produto é conhecimento organizado, não um acervo de arquivos.** A reunião tem
+valor porque as skills se conhecem — contrato de memória, duas camadas, marca por
+parâmetro. Nada disso exige embalar obra alheia.
+
 ## Regra de marca
 
 Nenhuma skill sai com a identidade da Córtex embutida. Cor, fonte, logo e rodapé
