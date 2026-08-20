@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// Operacoes de video em cima do ffmpeg. Sem dependencia de npm: o unico
-// requisito e o ffmpeg instalado na maquina.
+// Operacoes de video em cima do ffmpeg. Cortar, virar vertical, juntar e tirar
+// capa precisam so do ffmpeg. Legendar chama o legendar.js, que desenha o texto
+// no Chromium — para essa, e preciso rodar npm install nesta pasta.
 //
 // Existe para o modelo nao ter que montar filtro de ffmpeg de cabeca a cada
 // pedido. Filtro escrito no improviso erra silenciosamente — sai video com
