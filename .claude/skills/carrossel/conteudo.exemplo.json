@@ -1,0 +1,58 @@
+{
+  "slides": [
+    {
+      "tipo": "capa",
+      "eyebrow": "Rótulo curto do tema",
+      "titulo": "A frase que para a rolagem. Curta."
+    },
+    {
+      "tipo": "contraste",
+      "errado": {
+        "rotulo": "O que parece",
+        "texto": "A leitura fácil e errada"
+      },
+      "certo": {
+        "rotulo": "O que é",
+        "texto": "A leitura certa"
+      },
+      "chamada": "Fecho de uma linha."
+    },
+    {
+      "tipo": "trilha",
+      "itens": [
+        "Primeira",
+        "Segunda",
+        "Terceira",
+        "Quarta",
+        "Quinta"
+      ],
+      "ativo": 0,
+      "frase": "Uma frase. Só uma."
+    },
+    {
+      "tipo": "comparacao",
+      "categoria": "Para a tarefa",
+      "opcoes": [
+        {
+          "nome": "Primeira",
+          "micro": "Até três palavras"
+        },
+        {
+          "nome": "Segunda",
+          "micro": "Idem"
+        }
+      ]
+    },
+    {
+      "tipo": "declaracao",
+      "eyebrow": "A regra",
+      "titulo": "A conclusão, curta e memorável."
+    },
+    {
+      "tipo": "cta",
+      "titulo": "A pergunta que devolve pro leitor?",
+      "chamada": "Chama no direct.",
+      "contato": "@suaempresa"
+    }
+  ]
+}

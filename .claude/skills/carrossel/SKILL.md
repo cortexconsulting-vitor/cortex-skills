@@ -68,8 +68,13 @@ não procura em outro lugar; sem essa cópia ele para com erro.
 Depois escreva `conteudo.json`.
 
 **Tipos de slide disponíveis:** `capa`, `contraste`, `trilha`, `comparacao`,
-`declaracao`, `cta`. O formato de cada um está no bloco de exemplo em
-`motor/base.html`.
+`declaracao`, `cta`.
+
+**Copie o formato de `conteudo.exemplo.json`**, na pasta da skill — ele tem os seis
+tipos com os nomes de campo exatos. Não escreva de memória: o molde usa `eyebrow`
+onde parece natural escrever `rotulo`, e `contraste` espera dois objetos
+(`errado` e `certo`), não dois textos soltos. Campo com nome errado derruba o
+slide inteiro.
 
 Regras que a arte cobra e o texto tem que respeitar:
 

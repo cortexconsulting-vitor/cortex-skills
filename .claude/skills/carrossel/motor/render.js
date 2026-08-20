@@ -128,13 +128,33 @@ fs.writeFileSync(montado, html);
     throw e;
   }
   const pagina = await navegador.newPage();
-  pagina.on('pageerror', e => { console.error('ERRO NA PAGINA:', e.message); process.exitCode = 1; });
+  const erros = [];
+  pagina.on('pageerror', e => erros.push(e.message));
   await pagina.setViewport({ width: 1080, height: 1350, deviceScaleFactor: 2 });
   await pagina.goto('file://' + montado, { waitUntil: 'networkidle0' });
   await pagina.evaluate(() => document.fonts.ready);
 
+  // Um campo errado no conteudo.json derruba o slide e o molde segue em frente.
+  // Sem esta checagem o motor imprimia "pronto" com um slide de cinco — declarar
+  // conclusao com o trabalho pela metade e o pior comportamento possivel.
   const slides = await pagina.$$('.slide');
-  if (!slides.length) throw new Error('nenhum slide gerado — conferir conteudo.json');
+  const pedidos = (conteudo.slides || []).length;
+
+  if (erros.length || slides.length !== pedidos) {
+    await navegador.close();
+    console.error('\n✗ o conteudo.json tem campo que o molde nao entende.');
+    console.error(`  pedidos: ${pedidos} slides · desenhados: ${slides.length}`);
+    if (slides.length < pedidos) {
+      const t = (conteudo.slides || [])[slides.length];
+      console.error(`  parou no slide ${slides.length + 1}, do tipo "${t && t.tipo || '?'}"`);
+    }
+    erros.forEach((e) => console.error(`  erro: ${e}`));
+    console.error('');
+    console.error('  O formato de cada tipo de slide esta em conteudo.exemplo.json,');
+    console.error('  na pasta da skill. Compare os nomes dos campos — trocar');
+    console.error('  "rotulo" por "eyebrow" ja e o bastante para derrubar o slide.\n');
+    process.exit(1);
+  }
   console.log(`${slides.length} slides`);
 
   // Aviso de texto perto de estourar a arte — herdado do molde original.
