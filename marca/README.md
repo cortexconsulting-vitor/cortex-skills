@@ -16,7 +16,7 @@ Sem os dois `.md` as skills continuam funcionando — só saem mais genéricas.
 Nenhuma para por falta deles.
 
 **Esta pasta é a marca deste workspace.** Se a marca é sua e vale em qualquer
-pasta que você abrir, o lugar dela é `~/.claude/cortex-skills/marca.json`, e o
+pasta que você abrir, o lugar dela é `~/.claude/cortex-.claude/skills/marca.json`, e o
 esquema é o mesmo. O local vence o global: uma pasta com `marca/marca.json`
 própria ignora a global — é assim que se atende vários clientes sem misturar.
 

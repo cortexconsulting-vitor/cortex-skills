@@ -5,19 +5,19 @@ de um `git clone` qualquer: o comprador não recebe só instrução de máquina,
 o entendimento junto.
 
 ```
-skills/<nome-da-skill>/
+.claude/skills/<nome-da-skill>/
 ├── SKILL.md      # o que o Claude lê e executa
 ├── GUIA.md       # o que a PESSOA lê antes de usar
 └── (arquivos de apoio: templates, scripts, exemplos)
 ```
 
-**Nada que seja da sua máquina viaja dentro de `skills/`.** Já escaparam por ali
+**Nada que seja da sua máquina viaja dentro de `.claude/skills/`.** Já escaparam por ali
 peças de teste com PNG na cor da Córtex e 29 MB de `node_modules` compilado. O
 `.gitignore` não protege: quem instala copia a pasta, não clona o repositório.
 Instalação se testa instalando numa pasta vazia e listando o que chegou.
 
-**Peça de teste não mora dentro de `skills/`.** Vai para `testes/<skill>/`, na
-raiz. A instalação do comprador é uma cópia de `skills/*` — tudo que estiver ali
+**Peça de teste não mora dentro de `.claude/skills/`.** Vai para `testes/<skill>/`, na
+raiz. A instalação do comprador é uma cópia de `.claude/skills/*` — tudo que estiver ali
 dentro chega na máquina dele, inclusive PNG renderizado com a marca da Córtex.
 Isso foi encontrado testando a instalação numa pasta vazia, não lendo o código.
 
@@ -46,7 +46,7 @@ handle, público, tom — segue **esta ordem, sem exceção**:
    daquele cliente. Achou? Usa e **não pergunta nada.**
 2. **`marca.json` na pasta em que está trabalhando.** Peça solta, sem workspace
    montado. Achou? Usa.
-3. **`~/.claude/cortex-skills/marca.json`** — a marca da própria pessoa, que vale
+3. **`~/.claude/cortex-.claude/skills/marca.json`** — a marca da própria pessoa, que vale
    em qualquer pasta da máquina. Achou? Usa.
 4. **Nada disso? Faz a própria entrevista curta** — e no fim oferece gravar.
 

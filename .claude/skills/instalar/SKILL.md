@@ -17,7 +17,7 @@ Nunca pergunte o que você consegue descobrir sozinho.
    Se não achar nenhuma das duas, ela ainda não copiou as skills: mostre o comando
    do `README.md` do repositório e pare aqui.
 2. **Procure a marca**, na ordem do contrato: `marca/marca.json` no workspace,
-   `marca.json` na pasta, `~/.claude/cortex-skills/marca.json` no global.
+   `marca.json` na pasta, `~/.claude/cortex-.claude/skills/marca.json` no global.
 
 **Se já existir marca em qualquer um dos três, não refaça a entrevista.** Diga
 **de onde** ela veio, mostre o que está gravado e pergunte uma coisa só:
@@ -66,7 +66,7 @@ Antes de gravar, **pergunte onde** — é a decisão que define o resto do uso:
 
 > "Essa marca é tua, ou é de um cliente que você atende?
 >
-> Se for tua, eu guardo em `~/.claude/cortex-skills/marca.json` e ela vale em
+> Se for tua, eu guardo em `~/.claude/cortex-.claude/skills/marca.json` e ela vale em
 > **qualquer pasta** que você abrir. Se for de cliente, guardo em `marca/marca.json`
 > aqui nesta pasta — e cada cliente fica na pasta dele, sem misturar."
 

@@ -69,9 +69,9 @@ def main():
     raiz = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     os.chdir(raiz)
 
-    nossos = sorted(glob.glob('skills/*/*.md') + glob.glob('skills/*/*.js')
-                    + glob.glob('skills/*/*/*.html') + glob.glob('skills/*/*/*.js')
-                    + glob.glob('skills/*/*.json'))
+    nossos = sorted(glob.glob('.claude/skills/*/*.md') + glob.glob('.claude/skills/*/*.js')
+                    + glob.glob('.claude/skills/*/*/*.html') + glob.glob('.claude/skills/*/*/*.js')
+                    + glob.glob('.claude/skills/*/*.json'))
     fontes = []
     for padrao in FONTES:
         fontes += glob.glob(os.path.expanduser(padrao))

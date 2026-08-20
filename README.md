@@ -4,52 +4,49 @@
 
 | Skill | Estado | Precisa de |
 |---|---|---|
-| `skills/instalar` | **Funcionando.** Entrevista, grava a memória, confere dependências e prova com uma peça de teste | — |
-| `skills/carrossel` | **Funcionando.** Motor autoral, marca do comprador por parâmetro, 3 estilos | Node + puppeteer |
-| `skills/resposta-cliente` | **Funcionando.** Nomeia o que a mensagem é antes de escrever; usa a voz da empresa | — |
-| `skills/proposta` | **Funcionando.** Proposta de serviço em HTML com a marca do comprador, pronta pra virar PDF | — |
-| `skills/abrir` | **Funcionando.** Abre a sessão: onde parou, o que vence, e **uma** proposta de próximo passo | — |
-| `skills/salvar` | **Funcionando.** Commits por assunto, barra segredo antes de subir, push só com sim explícito | Git |
-| `skills/atualizar` | **Funcionando.** Reconcilia a memória com a pasta, propondo linha a linha com evidência | Git |
+| `.claude/skills/instalar` | **Funcionando.** Entrevista, grava a memória, confere dependências e prova com uma peça de teste | — |
+| `.claude/skills/carrossel` | **Funcionando.** Motor autoral, marca do comprador por parâmetro, 3 estilos | Node + puppeteer |
+| `.claude/skills/resposta-cliente` | **Funcionando.** Nomeia o que a mensagem é antes de escrever; usa a voz da empresa | — |
+| `.claude/skills/proposta` | **Funcionando.** Proposta de serviço em HTML com a marca do comprador, pronta pra virar PDF | — |
+| `.claude/skills/abrir` | **Funcionando.** Abre a sessão: onde parou, o que vence, e **uma** proposta de próximo passo | — |
+| `.claude/skills/salvar` | **Funcionando.** Commits por assunto, barra segredo antes de subir, push só com sim explícito | Git |
+| `.claude/skills/atualizar` | **Funcionando.** Reconcilia a memória com a pasta, propondo linha a linha com evidência | Git |
 
 Duas camadas em toda skill — `SKILL.md` para a máquina, `GUIA.md` para a pessoa.
 A convenção completa está em [`CONVENCAO.md`](CONVENCAO.md).
 
 ## Como instalar
 
-### Em todas as pastas (recomendado)
+### Clonar e usar — o caminho curto
 
-As skills ficam disponíveis em **qualquer pasta** que você abrir no Claude Code —
-terminal, app ou extensão do VS Code, que leem o mesmo lugar:
-
-```bash
-mkdir -p ~/.claude/skills
-rsync -a --exclude node_modules /caminho/para/cortex-skills/skills/ ~/.claude/skills/
-```
-
-### Só num projeto
-
-Quando as skills têm que valer só ali — um cliente, um repositório específico:
+As skills moram em `.claude/skills/`, que é onde o Claude Code procura. **Clonar
+já é instalar**, sem copiar nada:
 
 ```bash
-mkdir -p .claude/skills
-rsync -a --exclude node_modules /caminho/para/cortex-skills/skills/ .claude/skills/
+git clone <URL-do-repositorio> cortex-skills
 ```
 
-### Depois, em qualquer um dos dois
-
-No Claude Code, rode:
+Abra a pasta no Claude Code e rode:
 
 ```
 /instalar
 ```
 
-A cópia é um comando porque tem que ser: a skill de instalação não consegue se
-instalar sozinha. Feita a cópia, ela cuida do resto — entrevista, memória e teste.
+A instalação entrevista, grava a memória, confere o que falta na máquina e fecha
+com uma peça de teste. Feito isso, as skills valem **dentro desta pasta**.
+
+### Em todas as pastas
+
+Para as skills valerem em qualquer pasta que você abrir — terminal, app ou
+extensão do VS Code, que leem o mesmo lugar:
+
+```bash
+rsync -a --exclude node_modules /caminho/para/cortex-skills/.claude/skills/ ~/.claude/skills/
+```
 
 É `rsync` e não `cp` por um motivo: o motor do carrossel acumula 29 MB de
-`node_modules` compilado pra uma máquina só. Ele não pode viajar junto — cada
-instalação roda o seu `npm install`, e a skill de instalação avisa quando falta.
+`node_modules` compilado para uma máquina só. Ele não pode viajar junto — cada
+instalação roda o seu `npm install`, e a instalação avisa quando falta.
 
 ### Sobre o Codex e outras ferramentas
 
@@ -61,7 +58,7 @@ Codex é uma ponte separada, ainda não construída — e não está prometida a
 
 A memória segue quem você é:
 
-- **Marca sua**, em qualquer pasta → `~/.claude/cortex-skills/marca.json`
+- **Marca sua**, em qualquer pasta → `~/.claude/cortex-.claude/skills/marca.json`
 - **Marca de um cliente**, só naquela pasta → `marca/marca.json`
 
 O local vence o global. Quem atende dez clientes faz dez pastas, e nenhuma marca

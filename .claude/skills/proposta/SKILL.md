@@ -11,7 +11,7 @@ o menor preço.
 ## Passo 0 — a marca existe?
 
 Contrato de memória: `marca/marca.json` no workspace, `marca.json` na pasta,
-`~/.claude/cortex-skills/marca.json` no global. Achou, **use e não pergunte nada**.
+`~/.claude/cortex-.claude/skills/marca.json` no global. Achou, **use e não pergunte nada**.
 
 Daqui saem `nome`, `handle`, `paleta.acento` e `fontes`. Sem marca nenhuma,
 pergunte só **nome, @ e cor** — os outros campos não entram na proposta.
