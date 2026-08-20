@@ -1,6 +1,6 @@
 # Cortex Skills
 
-**Produto em formação.** Sete skills prontas, escritas do zero.
+**Produto em formação.** Onze skills prontas, escritas do zero.
 
 | Skill | Estado | Precisa de |
 |---|---|---|
@@ -11,6 +11,10 @@
 | `.claude/skills/abrir` | **Funcionando.** Abre a sessão: onde parou, o que vence, e **uma** proposta de próximo passo | — |
 | `.claude/skills/salvar` | **Funcionando.** Commits por assunto, barra segredo antes de subir, push só com sim explícito | Git |
 | `.claude/skills/atualizar` | **Funcionando.** Reconcilia a memória com a pasta, propondo linha a linha com evidência | Git |
+| `.claude/skills/publicar-tema` | **Funcionando.** Um tema vira texto, carrossel e três legendas — todas com a mesma tese | Node + puppeteer |
+| `.claude/skills/avaliacoes` | **Funcionando.** Réplica pública a review, escrita para quem lê e não para quem avaliou | — |
+| `.claude/skills/escrever-email` | **Funcionando.** Email que você inicia, com assunto que faz abrir e pedido na segunda linha | — |
+| `.claude/skills/video` | **Funcionando.** Corta, vira vertical pro Reels, junta, tira capa e legenda | FFmpeg |
 
 Duas camadas em toda skill — `SKILL.md` para a máquina, `GUIA.md` para a pessoa.
 A convenção completa está em [`CONVENCAO.md`](CONVENCAO.md).
