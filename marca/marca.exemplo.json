@@ -1,0 +1,31 @@
+{
+  "nome": "Nome da Empresa",
+  "handle": "@seuinstagram",
+  "descritor": "O que a empresa faz, em quatro ou cinco palavras",
+  "estilo": "escuro-editorial",
+  "paleta": {
+    "fundo": "#120D0A",
+    "fundo_luz": "#B29C8F",
+    "fundo_medio": "#4C3325",
+    "fundo_claro": "#8A654F",
+    "tinta": "#F2EDE8",
+    "tinta_2": "#C9BCB0",
+    "tinta_3": "#8F8175",
+    "tinta_4": "#6B5D53",
+    "acento": "#BF9778",
+    "acento_claro": "#DDB08C",
+    "acento_fundo": "#9D785E",
+    "apagado": "#8A7460"
+  },
+  "fontes": {
+    "titulo": "Inter Tight",
+    "texto": "Jost",
+    "rotulo": "IBM Plex Mono"
+  },
+  "logo": {
+    "tipo": "svg-path",
+    "d": "M 87.95 32 A 42 42 0 1 0 87.95 68 L 74.23 65 A 28.5 28.5 0 1 1 74.23 35 Z"
+  },
+  "publico": "Descreva em uma frase quem lê",
+  "assunto": "O que a empresa faz"
+}

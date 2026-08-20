@@ -27,6 +27,33 @@ Cinco seções, sempre nesta ordem:
 4. **O erro comum** — o que trava na primeira vez e como sair
 5. **Como ajustar** — os dois ou três parâmetros que valem a pena mexer
 
+## Contrato de memória
+
+Toda skill que precisa saber algo sobre o negócio do comprador — nome, cor,
+handle, público, tom — segue **esta ordem, sem exceção**:
+
+1. **Procura `marca/marca.json`** na raiz do workspace. Achou? Usa e **não
+   pergunta nada.**
+2. **Não achou? Procura `marca.json` na pasta em que está trabalhando.** Achou?
+   Usa.
+3. **Não achou nenhum dos dois? Faz a própria entrevista curta** — e no fim
+   oferece gravar em `marca/marca.json`, para que a próxima skill não pergunte
+   de novo.
+
+O passo 3 é o que mantém cada skill vendável sozinha. O passo 1 é o que faz o
+conjunto virar sistema. Uma skill que só implementa o passo 3 é um catálogo;
+uma que só implementa o passo 1 fica inerte na mão de quem não instalou.
+
+**Skill que pergunta duas vezes a mesma coisa está com defeito.** Se a memória
+existe e a skill entrevistou mesmo assim, é bug — não é zelo.
+
+### Esquema duplicado é proposital
+
+`marca/marca.exemplo.json` é o esquema canônico. Skills podem carregar a própria
+cópia do exemplo, e o carrossel carrega — é o que permite copiar a pasta dela
+sozinha e funcionar. Ao mudar o esquema, **mudar as duas**. A duplicação é o
+preço da autossuficiência, e é um preço que aceitamos de olhos abertos.
+
 ## Regras de origem
 
 - **Nada de terceiro entra aqui.** Nenhum arquivo derivado do MazyOS, do Remotion
@@ -39,5 +66,5 @@ Cinco seções, sempre nesta ordem:
 ## Regra de marca
 
 Nenhuma skill sai com a identidade da Córtex embutida. Cor, fonte, logo e rodapé
-são **parâmetros do comprador**, lidos de `marca/marca.json`. Peça gerada com a
-marca da Córtex no feed de outra pessoa é defeito, não recurso.
+são **parâmetros do comprador**, resolvidos pelo contrato de memória acima.
+Peça gerada com a marca da Córtex no feed de outra pessoa é defeito, não recurso.
