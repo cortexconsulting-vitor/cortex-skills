@@ -1,0 +1,166 @@
+<meta charset="utf-8">
+<title>Proposta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     MODELO DE PROPOSTA — neutro de marca por padrão.
+
+     Nada aqui carrega a identidade de ninguém: 'Marca', '@suaempresa' e a
+     paleta clara são placeholders. O montar.js injeta a marca do comprador
+     por cima, e aborta se não achar o ponto de injeção.
+
+     Fundo claro por decisão, não por descuido: proposta se imprime. Da
+     paleta da marca entra o acento, que é o que dá a cara sem gastar tinta.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<style>
+  :root{
+    --acento:#B07A52;
+    --tinta:#16120F;
+    --tinta-2:#4A423B;
+    --tinta-3:#8A8078;
+    --linha:#E3DDD6;
+    --papel:#FFFFFF;
+    --papel-2:#FAF7F4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Jost',system-ui,sans-serif;
+    color:var(--tinta);background:var(--papel);
+    font-size:11pt;line-height:1.65;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .folha{max-width:820px;margin:0 auto;padding:64px 72px}
+
+  h1,h2,h3,.rotulo,.wordmark{font-family:'Inter Tight',system-ui,sans-serif}
+  .rotulo{
+    font-family:'IBM Plex Mono',monospace;font-size:9pt;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--acento);margin-bottom:10px
+  }
+
+  /* ——— capa ——— */
+  .capa{border-bottom:2px solid var(--acento);padding-bottom:40px;margin-bottom:48px}
+  .topo{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:56px}
+  .wordmark{font-size:15pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .topo .meta{font-family:'IBM Plex Mono',monospace;font-size:9pt;color:var(--tinta-3)}
+  h1{font-size:31pt;line-height:1.12;font-weight:600;letter-spacing:-.015em;max-width:16ch}
+  .para{margin-top:22px;font-size:12pt;color:var(--tinta-2)}
+  .para b{color:var(--tinta);font-weight:500}
+
+  /* ——— seções ——— */
+  section{margin-bottom:40px;break-inside:avoid}
+  h2{font-size:16pt;font-weight:600;letter-spacing:-.01em;margin-bottom:14px}
+  p{margin-bottom:12px;color:var(--tinta-2);max-width:68ch}
+  ul{list-style:none;margin:6px 0 0}
+  li{padding-left:22px;position:relative;margin-bottom:9px;color:var(--tinta-2);max-width:66ch}
+  li::before{content:'';position:absolute;left:2px;top:.62em;width:7px;height:7px;background:var(--acento)}
+  .fora li::before{background:none;border:1.5px solid var(--linha);top:.55em}
+  .fora li{color:var(--tinta-3)}
+
+  /* ——— fases ——— */
+  .fases{border-top:1px solid var(--linha)}
+  .fase{display:grid;grid-template-columns:34px 1fr 128px;gap:18px;
+        padding:15px 0;border-bottom:1px solid var(--linha);align-items:baseline}
+  .fase .n{font-family:'IBM Plex Mono',monospace;font-size:10pt;color:var(--acento)}
+  .fase .t{font-weight:500;color:var(--tinta)}
+  .fase .t span{display:block;font-weight:400;font-size:10pt;color:var(--tinta-3);margin-top:3px}
+  .fase .q{font-family:'IBM Plex Mono',monospace;font-size:9.5pt;color:var(--tinta-3);text-align:right}
+
+  /* ——— investimento ——— */
+  .valor{background:var(--papel-2);border-left:3px solid var(--acento);padding:26px 30px}
+  .valor .n{font-size:27pt;font-weight:600;letter-spacing:-.02em;font-family:'Inter Tight',sans-serif}
+  .valor .cond{margin-top:8px;color:var(--tinta-2);font-size:10.5pt}
+
+  /* ——— fechamento ——— */
+  .fecho{border-top:2px solid var(--acento);padding-top:26px;margin-top:52px;
+         display:flex;justify-content:space-between;align-items:flex-end;gap:28px}
+  .fecho .passo{max-width:44ch}
+  .fecho .passo b{display:block;font-family:'Inter Tight',sans-serif;font-size:13pt;margin-bottom:6px}
+  .fecho .ass{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:9pt;
+               color:var(--tinta-3);line-height:1.8;white-space:nowrap}
+  .validade{margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:8.5pt;
+            color:var(--tinta-3);letter-spacing:.04em}
+
+  @page{size:A4;margin:14mm}
+  @media print{ .folha{padding:0;max-width:none} body{font-size:10.5pt} }
+</style>
+
+<script type="application/json" id="proposta">
+{
+  "cliente": "Nome do Cliente",
+  "titulo": "O título da proposta",
+  "data": "00/00/0000",
+  "validade": "Proposta válida por 15 dias",
+  "entendimento": ["O que você entendeu do problema, na linguagem do cliente"],
+  "escopo": ["O que será entregue"],
+  "fora": ["O que não está incluído"],
+  "fases": [{ "nome": "Fase", "detalhe": "O que acontece nela", "quando": "Semana 1" }],
+  "investimento": { "valor": "R$ 0.000", "condicoes": "Como se paga" },
+  "voce": ["O que o cliente precisa fornecer"],
+  "proximo_passo": { "titulo": "O próximo passo", "texto": "O que acontece se ele aceitar" }
+}
+</script>
+
+<div class="folha" id="raiz"></div>
+
+<script>
+  const d = JSON.parse(document.getElementById('proposta').textContent);
+  const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c;
+                            if (x != null) e.textContent = x; return e; };
+  const lista = (itens, c) => { const u = el('ul', c); itens.forEach(i => u.appendChild(el('li', null, i))); return u; };
+  const secao = (rotulo, titulo, corpo) => {
+    const s = el('section');
+    s.append(el('div', 'rotulo', rotulo), el('h2', null, titulo));
+    corpo.forEach(n => s.appendChild(n));
+    return s;
+  };
+  const r = document.getElementById('raiz');
+
+  const capa = el('div', 'capa');
+  const topo = el('div', 'topo');
+  topo.append(el('div', 'wordmark', 'Marca'), el('div', 'meta', d.data));
+  const para = el('div', 'para');
+  para.innerHTML = 'Preparada para <b></b>';
+  para.querySelector('b').textContent = d.cliente;
+  capa.append(topo, el('h1', null, d.titulo), para);
+  r.appendChild(capa);
+
+  if (d.entendimento && d.entendimento.length)
+    r.appendChild(secao('O problema', 'O que eu entendi', [lista(d.entendimento)]));
+  if (d.escopo && d.escopo.length)
+    r.appendChild(secao('Escopo', 'O que está incluído', [lista(d.escopo)]));
+  if (d.fora && d.fora.length)
+    r.appendChild(secao('Limite', 'O que não está incluído', [lista(d.fora, 'fora')]));
+
+  if (d.fases && d.fases.length) {
+    const box = el('div', 'fases');
+    d.fases.forEach((f, i) => {
+      const linha = el('div', 'fase');
+      const t = el('div', 't', f.nome);
+      if (f.detalhe) t.appendChild(el('span', null, f.detalhe));
+      linha.append(el('div', 'n', String(i + 1).padStart(2, '0')), t,
+                   el('div', 'q', f.quando || ''));
+      box.appendChild(linha);
+    });
+    r.appendChild(secao('Como funciona', 'As etapas', [box]));
+  }
+
+  if (d.investimento) {
+    const v = el('div', 'valor');
+    v.append(el('div', 'n', d.investimento.valor));
+    if (d.investimento.condicoes) v.appendChild(el('div', 'cond', d.investimento.condicoes));
+    r.appendChild(secao('Investimento', 'Valor e condições', [v]));
+  }
+  if (d.voce && d.voce.length)
+    r.appendChild(secao('Da sua parte', 'O que eu preciso de você', [lista(d.voce)]));
+
+  const fecho = el('div', 'fecho');
+  const passo = el('div', 'passo');
+  passo.append(el('b', null, d.proximo_passo.titulo), el('div', null, d.proximo_passo.texto));
+  const ass = el('div', 'ass');
+  ass.append(el('div', null, 'Marca'), el('div', null, '@suaempresa'));
+  fecho.append(passo, ass);
+  r.append(fecho, el('div', 'validade', d.validade));
+</script>

@@ -1,0 +1,31 @@
+{
+  "cliente": "Nome do cliente",
+  "titulo": "O resultado que ele quer, em uma frase — não o nome do serviço",
+  "data": "20/08/2026",
+  "validade": "Proposta válida por 15 dias a partir da data de emissão",
+  "entendimento": [
+    "Um fato que o cliente disse, nas palavras dele",
+    "Outro fato, que ele reconheça na hora"
+  ],
+  "escopo": [
+    "O que será entregue, em substantivo concreto",
+    "Outro entregável"
+  ],
+  "fora": [
+    "O que ele pode supor que vem junto e não vem"
+  ],
+  "fases": [
+    { "nome": "Nome da fase", "detalhe": "O que acontece nela", "quando": "Semana 1" }
+  ],
+  "investimento": {
+    "valor": "R$ 0.000",
+    "condicoes": "Como se paga, e quem emite a nota"
+  },
+  "voce": [
+    "O que o cliente precisa fornecer para o prazo valer"
+  ],
+  "proximo_passo": {
+    "titulo": "Se fizer sentido",
+    "texto": "O que acontece quando ele aceitar"
+  }
+}
