@@ -27,5 +27,13 @@
     "d": "M 87.95 32 A 42 42 0 1 0 87.95 68 L 74.23 65 A 28.5 28.5 0 1 1 74.23 35 Z"
   },
   "publico": "Descreva em uma frase quem lê",
-  "assunto": "O que a empresa faz"
+  "assunto": "O que a empresa faz",
+  "voz": {
+    "tratamento": "você",
+    "tom": "Descreva em uma frase como a empresa fala",
+    "evitar": [
+      "o que nunca deve aparecer num texto seu"
+    ],
+    "assinatura": "Como você assina uma mensagem"
+  }
 }

@@ -1,11 +1,12 @@
 # Cortex Skills
 
-**Produto em formação.** Duas skills prontas, escritas do zero.
+**Produto em formação.** Três skills prontas, escritas do zero.
 
-| Skill | Estado |
-|---|---|
-| `skills/instalar` | **Funcionando.** Entrevista de 5 perguntas, grava a memória, confere dependências e prova com uma peça de teste |
-| `skills/carrossel` | **Funcionando.** Motor autoral, marca do comprador por parâmetro, 3 estilos |
+| Skill | Estado | Precisa de |
+|---|---|---|
+| `skills/instalar` | **Funcionando.** Entrevista, grava a memória, confere dependências e prova com uma peça de teste | — |
+| `skills/carrossel` | **Funcionando.** Motor autoral, marca do comprador por parâmetro, 3 estilos | Node + puppeteer |
+| `skills/resposta-cliente` | **Funcionando.** Nomeia o que a mensagem é antes de escrever; usa a voz da empresa | — |
 
 Duas camadas em toda skill — `SKILL.md` para a máquina, `GUIA.md` para a pessoa.
 A convenção completa está em [`CONVENCAO.md`](CONVENCAO.md).
