@@ -13,7 +13,16 @@ Não é um aplicativo. Você conversa, e as coisas saem em arquivo.
 
 ## Os três minutos
 
-**1.** Abra a pasta no Claude Code.
+**1.** No Claude Code, peça:
+
+> Clona o https://github.com/cortexconsulting-vitor/cortex-skills.git na pasta atual, entra nela e roda o `/instalar`.
+
+Ou pelo terminal:
+
+```bash
+git clone https://github.com/cortexconsulting-vitor/cortex-skills.git
+cd cortex-skills
+```
 
 **2.** Digite:
 

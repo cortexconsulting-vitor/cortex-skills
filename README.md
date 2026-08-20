@@ -38,7 +38,7 @@ As skills moram em `.claude/skills/`, que é onde o Claude Code procura. **Clona
 já é instalar**, sem copiar nada:
 
 ```bash
-git clone <URL-do-repositorio> cortex-skills
+git clone https://github.com/cortexconsulting-vitor/cortex-skills.git
 ```
 
 Abra a pasta no Claude Code e rode:
@@ -56,7 +56,7 @@ Para as skills valerem em qualquer pasta que você abrir — terminal, app ou
 extensão do VS Code, que leem o mesmo lugar:
 
 ```bash
-rsync -a --exclude node_modules /caminho/para/cortex-skills/.claude/skills/ ~/.claude/skills/
+rsync -a --exclude node_modules cortex-skills/.claude/skills/ ~/.claude/skills/
 ```
 
 É `rsync` e não `cp` por um motivo: o motor do carrossel acumula 29 MB de
