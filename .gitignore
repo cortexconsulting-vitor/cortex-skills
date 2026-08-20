@@ -4,3 +4,8 @@
 node_modules/
 # peças de teste — ficam FORA de skills/, para não vazarem na cópia do comprador
 testes/
+
+# memória do comprador — é o contexto de negócio dele, não o produto
+marca/marca.json
+marca/negocio.md
+marca/foco.md
