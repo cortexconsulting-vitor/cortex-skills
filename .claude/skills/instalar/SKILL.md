@@ -115,7 +115,7 @@ Hoje:
 
 | Skill | Precisa | Como conferir |
 |---|---|---|
-| `carrossel` | Node, `puppeteer` **e o navegador dele** | `node --version`, procurar `node_modules/puppeteer`, e conferir se o navegador existe |
+| `carrossel` | Node, `puppeteer` **e o navegador dele** | `node --version` e o teste de abertura abaixo |
 | `proposta` | Node, só isso | `node --version` |
 | `publicar-tema` | o mesmo do `carrossel` | idem |
 | `video` | FFmpeg (e `npm install` na pasta, só para legendar) | `ffmpeg -version` |
@@ -136,14 +136,19 @@ npm install
 npx puppeteer browsers install chrome
 ```
 
-Confira o navegador de verdade, não só a pasta `node_modules`:
+**Não conclua olhando pasta.** `node_modules` presente não garante navegador, e
+navegador em `~/.cache/puppeteer` não garante o pacote. As duas metades falham
+separadas, e olhar uma delas leva a diagnóstico errado — aconteceu em 20/08/2026,
+numa máquina que estava completa e foi reportada como incompleta.
+
+**Rode o teste**, dentro de `motor/`. É a única resposta confiável:
 
 ```bash
 node -e "require('puppeteer').launch().then(b=>b.close()).then(()=>console.log('ok'))"
 ```
 
-Se isso falhar, o segundo comando não foi rodado. É o motivo número um de a
-primeira peça não sair.
+Imprimiu `ok`, está pronto — não peça mais nada. Falhou, mostre os dois comandos
+de instalação. É o motivo número um de a primeira peça não sair.
 
 Se algum `GUIA.md` declarar dependência com licença comercial, **diga o limite em
 voz alta** — não deixe a pessoa descobrir isso depois de construir em cima.
