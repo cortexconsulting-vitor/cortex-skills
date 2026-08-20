@@ -2,5 +2,5 @@
 **/instagram/
 **/carrossel.html
 node_modules/
-# peças de teste
-skills/*/teste-*/
+# peças de teste — ficam FORA de skills/, para não vazarem na cópia do comprador
+testes/

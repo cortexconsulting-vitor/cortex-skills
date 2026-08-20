@@ -1,0 +1,116 @@
+---
+name: instalar
+description: Configura o Cortex Skills no workspace. Faz uma entrevista curta sobre a empresa, grava a identidade em marca/marca.json para todas as skills lerem, e confere o que está instalado e funcionando. Use quando a pessoa acabou de copiar as skills, ou disser "instalar", "configurar", "primeiro uso", "acabei de baixar", "/instalar" — e também quando outra skill não encontrar a marca.
+---
+
+# Instalar
+
+Esta skill não copia arquivo. Ela faz o que só ela pode fazer: **preencher a
+memória que todas as outras skills leem**, e provar que o conjunto funciona.
+
+## Passo 0 — leia antes de perguntar
+
+Nunca pergunte o que você consegue descobrir sozinho.
+
+1. **Liste a pasta de skills instaladas** — `.claude/skills/` no workspace, ou
+   `~/.claude/skills/` se a instalação foi global. É isso que a pessoa tem em mãos.
+   Se não achar nenhuma das duas, ela ainda não copiou as skills: mostre o comando
+   do `README.md` do repositório e pare aqui.
+2. **Procure `marca/marca.json`.**
+
+**Se `marca/marca.json` já existir, não refaça a entrevista.** Mostre o que está
+gravado e pergunte uma coisa só:
+
+> "Já tem marca configurada aqui: **\<nome\>**, \<handle\>, estilo \<estilo\>.
+> Quer manter, ajustar algum campo, ou refazer do zero?"
+
+Ajustar é o caminho comum. Refazer do zero só se ela pedir com essas palavras.
+
+## Passo 1 — a entrevista
+
+Cinco perguntas. **Uma por vez, esperando a resposta.** Não despeje as cinco de
+uma vez e não invente resposta que a pessoa não deu.
+
+1. **"Qual é a empresa e o que ela faz?"** — vira `nome` e `descritor`. O
+   descritor tem que caber em quatro ou cinco palavras: é rodapé, não slogan.
+2. **"Quem lê o que você publica?"** — vira `publico`. Decide vocabulário, não
+   cor. "Dono de PME que não é técnico" e "diretor de arte" pedem textos
+   diferentes da mesma empresa.
+3. **"Tem cor de marca?"** — se souber os códigos, peça. Se não souber, pergunte
+   qual sensação a marca tem que passar: **séria e sóbria**, **leve e clara**,
+   ou **direta e enérgica** — e use a resposta pra escolher o estilo.
+4. **"Tem logo?"** — se tiver SVG, peça o caminho e extraia o `d` do path
+   principal. Se não tiver, siga sem: o rodapé funciona só com o handle. **Não
+   desenhe um logo.**
+5. **"Qual o @ e onde você publica?"** — vira `handle`.
+
+### Escolhendo o estilo
+
+Leia `estilos/` dentro da pasta da skill de carrossel. Cada arquivo tem um campo
+`quando` dizendo pra que serve. Case com a resposta 3:
+
+| Sensação | Estilo |
+|---|---|
+| Séria e sóbria | `escuro-editorial` |
+| Leve e clara | `claro-minimo` |
+| Direta e enérgica | `alto-contraste` |
+
+**Proponha e confirme antes de gravar.** Se a pessoa deu cores próprias, use as
+dela e mantenha o resto da predefinição — trocar a paleta inteira por três cores
+soltas quebra o contraste que o molde depende.
+
+## Passo 2 — gravar e mostrar
+
+Grave `marca/marca.json` seguindo o esquema de `marca/marca.exemplo.json`.
+
+**Mostre o que gravou**, campo a campo, e diga a frase que importa:
+
+> "Gravei em `marca/marca.json`. Nenhuma outra skill vai te perguntar isso de novo."
+
+Se a pessoa versiona o workspace, avise que esse arquivo é o contexto de negócio
+dela, não o produto — e que ela provavelmente quer ignorá-lo no Git.
+
+## Passo 3 — conferir as dependências
+
+Não embale ferramenta de terceiro. **Confira e instrua.**
+
+Para cada skill instalada, leia o `GUIA.md` dela e veja se declara dependência.
+Hoje:
+
+| Skill | Precisa | Como conferir |
+|---|---|---|
+| `carrossel` | Node + `puppeteer` | `node --version` e procurar `node_modules/puppeteer` |
+
+O que faltar, **mostre o comando e deixe a pessoa rodar**. Não instale pacote por
+conta própria: é download grande na máquina dela, e a decisão é dela.
+
+Se algum `GUIA.md` declarar dependência com licença comercial, **diga o limite em
+voz alta** — não deixe a pessoa descobrir isso depois de construir em cima.
+
+## Passo 4 — provar que funciona
+
+Instalação que termina em "pronto!" sem nada rodando não provou nada.
+
+Ofereça fechar o ciclo:
+
+> "Quer que eu faça um carrossel de teste agora, com a tua marca? É o jeito de
+> ver se ficou do jeito que você quer antes de valer pra um post de verdade."
+
+Se ela aceitar, chame a skill de carrossel com um tema que ela mesma dê. **Ela já
+vai encontrar `marca/marca.json` e não vai perguntar nada** — e é exatamente isso
+que a pessoa precisa ver acontecendo.
+
+Se ela recusar, tudo bem. Termine dizendo o que existe e como se chama:
+
+> "Tudo configurado. Você tem: \<lista das skills\>. Cada uma tem um `GUIA.md`
+> do lado explicando quando usar e, mais importante, quando não usar."
+
+## Nunca
+
+- **Não refaça a entrevista se a marca já existe.** Perguntar duas vezes a mesma
+  coisa é o defeito que o contrato de memória existe pra evitar
+- **Não invente cor, público ou descritor** que a pessoa não deu. Campo vazio é
+  honesto; campo inventado vira post errado com a cara dela
+- **Não instale dependência sem autorização.** Mostre o comando
+- **Não declare instalado o que você não viu funcionar.** Se o teste do Passo 4
+  não rodou, diga que não rodou

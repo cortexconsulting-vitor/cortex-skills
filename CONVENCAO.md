@@ -11,6 +11,11 @@ skills/<nome-da-skill>/
 └── (arquivos de apoio: templates, scripts, exemplos)
 ```
 
+**Peça de teste não mora dentro de `skills/`.** Vai para `testes/<skill>/`, na
+raiz. A instalação do comprador é uma cópia de `skills/*` — tudo que estiver ali
+dentro chega na máquina dele, inclusive PNG renderizado com a marca da Córtex.
+Isso foi encontrado testando a instalação numa pasta vazia, não lendo o código.
+
 ## SKILL.md — camada da máquina
 
 Frontmatter com `name` e `description`. A `description` decide se a skill dispara
